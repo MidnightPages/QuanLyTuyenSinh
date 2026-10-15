@@ -1,0 +1,103 @@
+:root {
+  --header-bg: #e3fadc;
+  --input-bg: #f6e8e6;
+  --text: #000;
+  --error: #b92717;
+  --ok: #1b8320;
+}
+ 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, "Inter", sans-serif;
+  background: #fff;
+}
+ 
+.header {
+  display: flex;
+  flex-direction: column;
+  background: var(--header-bg);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  color: var(--text);
+}
+.header h1 { font-size: 32px; font-weight: 800; }
+.header h2 { font-size: 20px; font-weight: 400; opacity: 0.5;}
+ 
+main { display: flex; justify-content: center; padding: 120px 20px 80px; }
+ 
+form { width: 100%; max-width: 690px; }
+ 
+.field { margin-bottom: 52px; }
+ 
+.field label {
+  display: block;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+ 
+.field input,
+.field select {
+  display: block;
+  width: calc(100% - 34px);
+  margin-left: 34px;
+  height: 46px;
+  padding: 0 35px;
+  border: 2px solid transparent;
+  border-radius: 23px;
+  background: var(--input-bg);
+  font: inherit;
+  font-size: 20px;
+  opacity: 0.5;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+}
+.field select { appearance: none; cursor: pointer; }
+.field input::placeholder { color: #000; opacity: 1; }
+.field input:focus,
+.field select:focus { border-color: #d9b8b3; }
+.field.invalid input,
+.field.invalid select { border-color: var(--error); }
+ 
+.error {
+  display: block;
+  margin: 6px 0 0 97px;
+  min-height: 18px;
+  font-size: 16px;
+  color: var(--error);
+}
+ 
+.submit {
+  margin-left: 34px;
+  height: 46px;
+  padding: 0 40px;
+  border: 0;
+  border-radius: 23px;
+  background: var(--header-bg);
+  font: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.submit:hover { filter: brightness(.96); }
+.submit:focus-visible { outline: 3px solid #9ad98c; outline-offset: 2px; }
+ 
+.status { margin: 16px 0 0 34px; font-size: 18px; color: var(--ok); }
+ 
+@media (max-width: 768px) {
+  .header { padding: 0 20px; }
+  .header h1 { font-size: 24px; }
+  main { padding-top: 48px; }
+  .field label { font-size: 22px; }
+  .field input, .field select { font-size: 18px; padding: 0 24px; margin-left: 0; width: 100%; }
+  .error { margin-left: 24px; }
+  .submit, .status { margin-left: 0; }
+}
+ 
+.submit:disabled { opacity: .6; cursor: wait; }

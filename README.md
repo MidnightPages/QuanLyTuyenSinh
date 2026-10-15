@@ -40,13 +40,9 @@ Học viên đăng ký trên website, hồ sơ được lưu vào CSDL với tr�
 ├── QuanLyTuyenSinh/        # ứng dụng WinForms
 │   ├── Data/               # Db.cs (kết nối CSDL) và các lớp truy vấn
 │   ├── Models/
-
 │   ├── Services/ 
-
 │   ├── Controls/ 
-
 │   ├── Forms/ 
-
 │   ├── Helpers/
 │   └── Program.cs
 ├── web/                    # website đăng ký
@@ -162,7 +158,3 @@ Dữ liệu mẫu còn có các nhân viên `nv.hung`, `nv.mai`, `nv.nam` (cùng
 |Website báo lỗi kết nối|Kiểm tra giá trị trong `ket\_noi()` của `web/app.py` hoặc các biến môi trường `PG...`|
 |Lỗi khi chạy file `02\_du\_lieu\_mo\_phong.sql` về `pgcrypto`|Chạy bằng tài khoản có quyền tạo extension (thường là `postgres`)|
 |Đăng nhập báo sai mật khẩu|Dùng đúng tài khoản mẫu ở mục 5; kiểm tra đã chạy file dữ liệu mẫu chưa|
-
-
-
-# QuanLyTuyenSinh

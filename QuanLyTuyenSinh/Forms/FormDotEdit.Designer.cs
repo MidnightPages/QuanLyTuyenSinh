@@ -18,6 +18,7 @@ namespace QuanLyTuyenSinh.Forms
 
         private void InitializeComponent()
         {
+            DataGridViewCellStyle styleGiua = new DataGridViewCellStyle();
             tabMain = new TabControl();
             tabThongTin = new TabPage();
             lblTenDot = new Label();
@@ -31,7 +32,12 @@ namespace QuanLyTuyenSinh.Forms
             lblMoTa = new Label();
             txtMoTa = new TextBox();
             tabKhoaHoc = new TabPage();
-            clbKhoaHoc = new CheckedListBox();
+            dgvKhoaHoc = new DataGridView();
+            colStt = new DataGridViewTextBoxColumn();
+            colChon = new DataGridViewCheckBoxColumn();
+            colTenKhoaHoc = new DataGridViewTextBoxColumn();
+            colChiTieu = new DataGridViewTextBoxColumn();
+            colGhiChu = new DataGridViewTextBoxColumn();
             lblHuongDan = new Label();
             pnlDuoi = new Panel();
             btnLuu = new Button();
@@ -39,6 +45,7 @@ namespace QuanLyTuyenSinh.Forms
             tabMain.SuspendLayout();
             tabThongTin.SuspendLayout();
             tabKhoaHoc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvKhoaHoc).BeginInit();
             pnlDuoi.SuspendLayout();
             SuspendLayout();
             // tabMain
@@ -134,7 +141,7 @@ namespace QuanLyTuyenSinh.Forms
             txtMoTa.Size = new Size(580, 120);
             txtMoTa.TabIndex = 9;
             // tabKhoaHoc
-            tabKhoaHoc.Controls.Add(clbKhoaHoc);
+            tabKhoaHoc.Controls.Add(dgvKhoaHoc);
             tabKhoaHoc.Controls.Add(lblHuongDan);
             tabKhoaHoc.Location = new Point(4, 24);
             tabKhoaHoc.Name = "tabKhoaHoc";
@@ -149,18 +156,59 @@ namespace QuanLyTuyenSinh.Forms
             lblHuongDan.Location = new Point(3, 3);
             lblHuongDan.Name = "lblHuongDan";
             lblHuongDan.Padding = new Padding(5, 5, 0, 0);
-            lblHuongDan.Size = new Size(746, 45);
-            lblHuongDan.Text = "Tích chọn các khóa học được mở trong đợt này. Khóa học đã có hồ sơ hoặc đã được phân công nhân viên thì không bỏ tích được.";
-            // clbKhoaHoc
-            clbKhoaHoc.CheckOnClick = true;
-            clbKhoaHoc.Dock = DockStyle.Fill;
-            clbKhoaHoc.FormattingEnabled = true;
-            clbKhoaHoc.IntegralHeight = false;
-            clbKhoaHoc.Location = new Point(3, 48);
-            clbKhoaHoc.Name = "clbKhoaHoc";
-            clbKhoaHoc.Size = new Size(746, 386);
-            clbKhoaHoc.TabIndex = 0;
-            clbKhoaHoc.ItemCheck += clbKhoaHoc_ItemCheck;
+            lblHuongDan.Size = new Size(746, 50);
+            lblHuongDan.Text = "Tích chọn các khóa học được mở trong đợt này và nhập chỉ tiêu (số học viên cần tuyển) cho từng khóa. Khóa học đã có hồ sơ hoặc phân công thì không bỏ tích được. Chỉ tiêu bằng 0 nghĩa là chưa đặt chỉ tiêu.";
+            // dgvKhoaHoc
+            dgvKhoaHoc.AllowUserToAddRows = false;
+            dgvKhoaHoc.AllowUserToDeleteRows = false;
+            dgvKhoaHoc.AllowUserToResizeRows = false;
+            dgvKhoaHoc.AutoGenerateColumns = false;
+            dgvKhoaHoc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvKhoaHoc.BackgroundColor = Color.White;
+            dgvKhoaHoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvKhoaHoc.Columns.AddRange(new DataGridViewColumn[] { colStt, colChon, colTenKhoaHoc, colChiTieu, colGhiChu });
+            dgvKhoaHoc.Dock = DockStyle.Fill;
+            dgvKhoaHoc.EditMode = DataGridViewEditMode.EditOnEnter;
+            dgvKhoaHoc.Location = new Point(3, 53);
+            dgvKhoaHoc.MultiSelect = false;
+            dgvKhoaHoc.Name = "dgvKhoaHoc";
+            dgvKhoaHoc.RowHeadersVisible = false;
+            dgvKhoaHoc.Size = new Size(746, 381);
+            dgvKhoaHoc.TabIndex = 0;
+            dgvKhoaHoc.CellBeginEdit += dgvKhoaHoc_CellBeginEdit;
+            dgvKhoaHoc.CellValidating += dgvKhoaHoc_CellValidating;
+            dgvKhoaHoc.CurrentCellDirtyStateChanged += dgvKhoaHoc_CurrentCellDirtyStateChanged;
+            dgvKhoaHoc.DataError += dgvKhoaHoc_DataError;
+            // colStt
+            styleGiua.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            colStt.DefaultCellStyle = styleGiua;
+            colStt.FillWeight = 30F;
+            colStt.HeaderText = "STT";
+            colStt.Name = "colStt";
+            colStt.ReadOnly = true;
+            // colChon
+            colChon.DataPropertyName = "Chon";
+            colChon.FillWeight = 35F;
+            colChon.HeaderText = "Chọn";
+            colChon.Name = "colChon";
+            // colTenKhoaHoc
+            colTenKhoaHoc.DataPropertyName = "TenKhoaHoc";
+            colTenKhoaHoc.FillWeight = 160F;
+            colTenKhoaHoc.HeaderText = "Khóa Học";
+            colTenKhoaHoc.Name = "colTenKhoaHoc";
+            colTenKhoaHoc.ReadOnly = true;
+            // colChiTieu
+            colChiTieu.DataPropertyName = "ChiTieu";
+            colChiTieu.DefaultCellStyle = styleGiua;
+            colChiTieu.FillWeight = 60F;
+            colChiTieu.HeaderText = "Chỉ Tiêu";
+            colChiTieu.Name = "colChiTieu";
+            // colGhiChu
+            colGhiChu.DataPropertyName = "GhiChu";
+            colGhiChu.FillWeight = 130F;
+            colGhiChu.HeaderText = "Ghi Chú";
+            colGhiChu.Name = "colGhiChu";
+            colGhiChu.ReadOnly = true;
             // pnlDuoi
             pnlDuoi.Controls.Add(btnLuu);
             pnlDuoi.Controls.Add(btnDong);
@@ -203,6 +251,7 @@ namespace QuanLyTuyenSinh.Forms
             tabThongTin.ResumeLayout(false);
             tabThongTin.PerformLayout();
             tabKhoaHoc.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvKhoaHoc).EndInit();
             pnlDuoi.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -222,7 +271,12 @@ namespace QuanLyTuyenSinh.Forms
         private Label lblMoTa;
         private TextBox txtMoTa;
         private TabPage tabKhoaHoc;
-        private CheckedListBox clbKhoaHoc;
+        private DataGridView dgvKhoaHoc;
+        private DataGridViewTextBoxColumn colStt;
+        private DataGridViewCheckBoxColumn colChon;
+        private DataGridViewTextBoxColumn colTenKhoaHoc;
+        private DataGridViewTextBoxColumn colChiTieu;
+        private DataGridViewTextBoxColumn colGhiChu;
         private Label lblHuongDan;
         private Panel pnlDuoi;
         private Button btnLuu;

@@ -256,13 +256,13 @@ public static class DotRepo
     }
 
     /// <summary>
-    /// Danh sách khóa học để tích chọn cho một đợt: các khóa đang mở và cả những khóa
+    /// Danh sách khóa học để tích chọn cho một đợt (kèm chỉ tiêu hiện có): các khóa đang mở và cả những khóa
     /// đã thuộc đợt (kể cả khi khóa đó đã ngừng). maDot = null khi đang thêm đợt mới.
     /// </summary>
     public static List<KhoaHocChonItem> LayKhoaHocChoDot(int? maDot)
     {
         const string sql = @"
-            SELECT x.MaKhoaHoc, x.TenKhoaHoc, x.CoTrongDot, x.CoDuLieu
+            SELECT x.MaKhoaHoc, x.TenKhoaHoc, x.CoTrongDot, x.CoDuLieu, x.ChiTieu
             FROM (
                 SELECT k.MaKhoaHoc, k.TenKhoaHoc, k.TrangThai,
                        EXISTS (SELECT 1 FROM DotKhoaHoc dk
@@ -271,7 +271,9 @@ public static class DotRepo
                                WHERE dk.MaDot = @dot AND dk.MaKhoaHoc = k.MaKhoaHoc
                                  AND (EXISTS (SELECT 1 FROM HoSoDangKy h WHERE h.MaDotKhoaHoc = dk.MaDotKhoaHoc)
                                    OR EXISTS (SELECT 1 FROM PhanCongTuyenSinh pc WHERE pc.MaDotKhoaHoc = dk.MaDotKhoaHoc))
-                              ) AS CoDuLieu
+                              ) AS CoDuLieu,
+                       COALESCE((SELECT dk.ChiTieu FROM DotKhoaHoc dk
+                                 WHERE dk.MaDot = @dot AND dk.MaKhoaHoc = k.MaKhoaHoc), 0) AS ChiTieu
                 FROM KhoaHoc k
             ) x
             WHERE x.TrangThai = 'Đang mở' OR x.CoTrongDot
@@ -290,7 +292,8 @@ public static class DotRepo
                 MaKhoaHoc = rd.GetInt32(0),
                 TenKhoaHoc = rd.GetString(1),
                 CoTrongDot = rd.GetBoolean(2),
-                CoDuLieu = rd.GetBoolean(3)
+                CoDuLieu = rd.GetBoolean(3),
+                ChiTieu = rd.GetInt32(4)
             });
         }
         return ds;
@@ -300,9 +303,14 @@ public static class DotRepo
     /// Đặt danh sách khóa học của đợt đúng bằng khoaHocCanCo: khóa mới được thêm, khóa không còn trong
     /// danh sách bị gỡ (trừ khóa đã có hồ sơ hoặc phân công). Trả về null nếu thành công, hoặc thông báo lỗi.
     /// </summary>
-    public static string? LuuKhoaHocTrongDot(int maDot, IEnumerable<int> khoaHocCanCo)
+    /// <summary>
+    /// Đặt danh sách khóa học của đợt (kèm chỉ tiêu) đúng bằng khoaHocCanCo: khóa mới được thêm, khóa cũ được
+    /// cập nhật chỉ tiêu, khóa không còn trong danh sách bị gỡ (trừ khóa đã có hồ sơ hoặc phân công).
+    /// Trả về null nếu thành công, hoặc thông báo lỗi.
+    /// </summary>
+    public static string? LuuKhoaHocTrongDot(int maDot, IEnumerable<(int MaKhoaHoc, int ChiTieu)> khoaHocCanCo)
     {
-        var dich = new HashSet<int>(khoaHocCanCo);
+        var dich = khoaHocCanCo.ToDictionary(x => x.MaKhoaHoc, x => x.ChiTieu);
 
         using var conn = Db.TaoKetNoi();
         conn.Open();
@@ -316,7 +324,8 @@ public static class DotRepo
             while (rd.Read()) hienTai.Add(rd.GetInt32(0));
         }
 
-        foreach (int kh in hienTai.Except(dich))
+        // Gỡ những khóa không còn được tích (trừ khóa đã có hồ sơ hoặc phân công)
+        foreach (int kh in hienTai.Except(dich.Keys))
         {
             using var kt = new NpgsqlCommand(@"
                 SELECT (SELECT COUNT(*) FROM HoSoDangKy h
@@ -337,13 +346,15 @@ public static class DotRepo
             del.ExecuteNonQuery();
         }
 
-        foreach (int kh in dich.Except(hienTai))
+        // Thêm khóa mới và cập nhật chỉ tiêu cho khóa đã có
+        foreach (var (kh, chiTieu) in dich)
         {
             using var ins = new NpgsqlCommand(@"
-                INSERT INTO DotKhoaHoc (MaDot, MaKhoaHoc) VALUES (@dot, @kh)
-                ON CONFLICT (MaDot, MaKhoaHoc) DO NOTHING", conn, tx);
+                INSERT INTO DotKhoaHoc (MaDot, MaKhoaHoc, ChiTieu) VALUES (@dot, @kh, @ct)
+                ON CONFLICT (MaDot, MaKhoaHoc) DO UPDATE SET ChiTieu = EXCLUDED.ChiTieu", conn, tx);
             ins.Parameters.AddWithValue("dot", maDot);
             ins.Parameters.AddWithValue("kh", kh);
+            ins.Parameters.AddWithValue("ct", chiTieu);
             ins.ExecuteNonQuery();
         }
 

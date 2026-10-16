@@ -4,14 +4,15 @@ using System.Text;
 
 namespace QuanLyTuyenSinh.Models;
 
-/// <summary>Một khóa học trong danh sách hộp kiểm của form Sửa đợt.</summary>
+/// <summary>Một khóa học trong bảng tích chọn của form Sửa đợt (kèm chỉ tiêu).</summary>
 public class KhoaHocChonItem
 {
     public int MaKhoaHoc { get; set; }
     public string TenKhoaHoc { get; set; } = "";
-    public bool CoTrongDot { get; set; }   // khóa này đang thuộc đợt
+    public bool CoTrongDot { get; set; }   // trạng thái ban đầu: khóa đang thuộc đợt
     public bool CoDuLieu { get; set; }     // đã có hồ sơ hoặc phân công trong khóa-đợt này (không gỡ được)
+    public bool Chon { get; set; }         // đang được tích trên giao diện
+    public int ChiTieu { get; set; }       // 0 = chưa đặt chỉ tiêu
 
-    public override string ToString() =>
-        TenKhoaHoc + (CoDuLieu ? "  -  đã có hồ sơ hoặc phân công" : "");
+    public string GhiChu => CoDuLieu ? "Đã có hồ sơ hoặc phân công" : "";
 }

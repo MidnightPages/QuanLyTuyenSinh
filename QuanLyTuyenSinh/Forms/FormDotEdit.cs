@@ -6,13 +6,14 @@ namespace QuanLyTuyenSinh.Forms;
 
 /// <summary>
 /// Thêm mới (dot = null), sửa hoặc xem (chiXem = true) một đợt tuyển sinh.
-/// Tab "Khóa Học Trong Đợt" liệt kê các khóa học kèm hộp kiểm; thông tin đợt và khóa học được lưu cùng lúc.
+/// Tab "Khóa Học Trong Đợt" là bảng tích chọn khóa học kèm chỉ tiêu; thông tin đợt, khóa học và
+/// chỉ tiêu được lưu cùng lúc.
 /// </summary>
 public partial class FormDotEdit : Form
 {
     private DotTuyenSinh? _dot;          // null khi đang thêm mới
     private readonly bool _chiXem;
-    private bool _dangNap;               // đang nạp danh sách khóa học, bỏ qua sự kiện ItemCheck
+    private List<KhoaHocChonItem> _dsKhoa = new();
 
     /// <summary>True nếu có thay đổi dữ liệu, để danh sách bên ngoài tải lại.</summary>
     public bool CoThayDoi { get; private set; }
@@ -20,6 +21,7 @@ public partial class FormDotEdit : Form
     public FormDotEdit(DotTuyenSinh? dot = null, bool chiXem = false)
     {
         InitializeComponent();
+        LuoiHelper.DanhSoThuTu(dgvKhoaHoc, "colStt");
         _dot = dot;
         _chiXem = chiXem;
 
@@ -60,52 +62,67 @@ public partial class FormDotEdit : Form
         cboTrangThai.Enabled = false;
         txtMoTa.ReadOnly = true;
         btnLuu.Visible = false;
-        lblHuongDan.Text = "Các khóa học được mở trong đợt này (chỉ xem).";
+        dgvKhoaHoc.ReadOnly = true;
+        lblHuongDan.Text = "Các khóa học được mở trong đợt này và chỉ tiêu của từng khóa (chỉ xem).";
     }
 
     private void NapKhoaHoc()
     {
         try
         {
-            var ds = DotRepo.LayKhoaHocChoDot(_dot?.MaDot);
-
-            _dangNap = true;
-            clbKhoaHoc.Items.Clear();
-            foreach (var khoa in ds)
-                clbKhoaHoc.Items.Add(khoa, khoa.CoTrongDot);
-            _dangNap = false;
+            _dsKhoa = DotRepo.LayKhoaHocChoDot(_dot?.MaDot);
+            foreach (var khoa in _dsKhoa) khoa.Chon = khoa.CoTrongDot;
+            dgvKhoaHoc.DataSource = _dsKhoa;
         }
         catch (Exception ex)
         {
-            _dangNap = false;
             MessageBox.Show("Không tải được danh sách khóa học: " + ex.Message, "Lỗi",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
-    private void clbKhoaHoc_ItemCheck(object? sender, ItemCheckEventArgs e)
+    // Không cho bỏ tích khóa đã có hồ sơ hoặc phân công
+    private void dgvKhoaHoc_CellBeginEdit(object? sender, DataGridViewCellCancelEventArgs e)
     {
-        if (_dangNap) return;
-
-        // Chế độ xem: không cho đổi
-        if (_chiXem)
+        if (dgvKhoaHoc.Columns[e.ColumnIndex].Name != "colChon") return;
+        if (dgvKhoaHoc.Rows[e.RowIndex].DataBoundItem is KhoaHocChonItem khoa && khoa.CoDuLieu && khoa.Chon)
         {
-            e.NewValue = e.CurrentValue;
-            return;
-        }
-
-        // Không cho bỏ tích khóa đã có hồ sơ hoặc phân công
-        if (e.NewValue == CheckState.Unchecked &&
-            clbKhoaHoc.Items[e.Index] is KhoaHocChonItem khoa && khoa.CoDuLieu)
-        {
-            e.NewValue = CheckState.Checked;
+            e.Cancel = true;
             MessageBox.Show($"Khóa học \"{khoa.TenKhoaHoc}\" đã có hồ sơ hoặc đã được phân công nhân viên nên không thể gỡ khỏi đợt.",
                 "Không thể gỡ", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 
+    // Chỉ tiêu phải là số nguyên không âm
+    private void dgvKhoaHoc_CellValidating(object? sender, DataGridViewCellValidatingEventArgs e)
+    {
+        if (dgvKhoaHoc.Columns[e.ColumnIndex].Name != "colChiTieu") return;
+
+        string chu = e.FormattedValue?.ToString()?.Trim() ?? "";
+        if (!int.TryParse(chu, out int so) || so < 0 || so > 1_000_000)
+        {
+            MessageBox.Show("Chỉ tiêu phải là một số nguyên từ 0 trở lên.", "Chỉ tiêu không hợp lệ",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            e.Cancel = true;
+        }
+    }
+
+    // Ghi nhận ngay khi tích ô (không chờ rời khỏi ô)
+    private void dgvKhoaHoc_CurrentCellDirtyStateChanged(object? sender, EventArgs e)
+    {
+        if (dgvKhoaHoc.IsCurrentCellDirty) dgvKhoaHoc.CommitEdit(DataGridViewDataErrorContexts.Commit);
+    }
+
+    private void dgvKhoaHoc_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+    {
+        e.ThrowException = false;   // tránh hộp thoại lỗi mặc định của DataGridView
+    }
+
     private void btnLuu_Click(object? sender, EventArgs e)
     {
+        // Chốt ô đang nhập dở (nếu nhập sai chỉ tiêu thì dừng lại)
+        if (!dgvKhoaHoc.EndEdit()) return;
+
         string ten = txtTenDot.Text.Trim();
         if (ten == "")
         {
@@ -129,14 +146,14 @@ public partial class FormDotEdit : Form
         }
 
         string? moTa = string.IsNullOrWhiteSpace(txtMoTa.Text) ? null : txtMoTa.Text.Trim();
-        var khoaHocDuocTich = clbKhoaHoc.CheckedItems.Cast<KhoaHocChonItem>()
-            .Select(x => x.MaKhoaHoc).ToList();
+        var khoaHocDuocTich = _dsKhoa.Where(x => x.Chon)
+            .Select(x => (MaKhoaHoc: x.MaKhoaHoc, ChiTieu: x.ChiTieu)).ToList();
 
         try
         {
             if (_dot == null)
             {
-                // Thêm đợt mới, rồi gắn các khóa học đã tích
+                // Thêm đợt mới, rồi gắn các khóa học đã tích kèm chỉ tiêu
                 var moi = new DotTuyenSinh
                 {
                     TenDot = ten,
@@ -159,7 +176,7 @@ public partial class FormDotEdit : Form
             }
             else
             {
-                // Lưu khóa học trước: nếu không hợp lệ thì chưa lưu gì cả
+                // Lưu khóa học và chỉ tiêu trước: nếu không hợp lệ thì chưa lưu gì cả
                 string? loi = DotRepo.LuuKhoaHocTrongDot(_dot.MaDot, khoaHocDuocTich);
                 if (loi != null)
                 {

@@ -20,7 +20,8 @@ public static class ThongKeRepo
                    COUNT(h.MaHoSo) AS Tong,
                    COUNT(h.MaHoSo) FILTER (WHERE h.TrangThaiHoSo = 'Chờ xử lý') AS ChoXuLy,
                    COUNT(h.MaHoSo) FILTER (WHERE h.TrangThaiHoSo = 'Đã duyệt') AS DaDuyet,
-                   COUNT(h.MaHoSo) FILTER (WHERE h.TrangThaiHoSo = 'Đã hủy') AS DaHuy
+                   COUNT(h.MaHoSo) FILTER (WHERE h.TrangThaiHoSo = 'Đã hủy') AS DaHuy,
+                   dk.ChiTieu
             FROM DotKhoaHoc dk
             JOIN DotTuyenSinh d ON d.MaDot = dk.MaDot
             JOIN KhoaHoc k ON k.MaKhoaHoc = dk.MaKhoaHoc
@@ -30,7 +31,7 @@ public static class ThongKeRepo
               AND (@nv IS NULL OR EXISTS (
                     SELECT 1 FROM PhanCongTuyenSinh pc
                     WHERE pc.MaNhanVien = @nv AND pc.MaDotKhoaHoc = dk.MaDotKhoaHoc))
-            GROUP BY dk.MaDotKhoaHoc, d.MaDot, d.TenDot, d.NgayBatDau, k.TenKhoaHoc
+            GROUP BY dk.MaDotKhoaHoc, dk.ChiTieu, d.MaDot, d.TenDot, d.NgayBatDau, k.TenKhoaHoc
             ORDER BY d.NgayBatDau DESC, d.MaDot DESC, k.TenKhoaHoc";
 
         var ds = new List<ThongKeItem>();
@@ -51,7 +52,8 @@ public static class ThongKeRepo
                 Tong = (int)rd.GetInt64(3),
                 ChoXuLy = (int)rd.GetInt64(4),
                 DaDuyet = (int)rd.GetInt64(5),
-                DaHuy = (int)rd.GetInt64(6)
+                DaHuy = (int)rd.GetInt64(6),
+                ChiTieu = rd.GetInt32(7)
             });
         }
         return ds;

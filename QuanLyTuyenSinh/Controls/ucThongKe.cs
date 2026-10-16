@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using ClosedXML.Excel;
 using QuanLyTuyenSinh.Data;
 using QuanLyTuyenSinh.Helpers;
@@ -16,7 +8,7 @@ using QuanLyTuyenSinh.Services;
 namespace QuanLyTuyenSinh.Controls;
 
 /// <summary>
-/// Thống kê hồ sơ theo đợt và khóa học. Quản trị viên xem toàn bộ,
+/// Thống kê hồ sơ và mức đạt chỉ tiêu theo đợt, khóa học. Quản trị viên xem toàn bộ,
 /// nhân viên chỉ xem các khóa học mình được phân công.
 /// </summary>
 public partial class ucThongKe : UserControl
@@ -86,12 +78,28 @@ public partial class ucThongKe : UserControl
             lblChoXuLy.Text = $"Chờ xử lý\n{_ds.Sum(x => x.ChoXuLy)}";
             lblDaDuyet.Text = $"Đã duyệt\n{_ds.Sum(x => x.DaDuyet)}";
             lblDaHuy.Text = $"Đã hủy\n{_ds.Sum(x => x.DaHuy)}";
+
+            // Mức đạt chỉ tiêu chung: chỉ tính các khóa đã đặt chỉ tiêu
+            int tongChiTieu = _ds.Sum(x => x.ChiTieu);
+            int duyetCoChiTieu = _ds.Where(x => x.ChiTieu > 0).Sum(x => x.DaDuyet);
+            lblChiTieu.Text = tongChiTieu > 0
+                ? $"Đạt chỉ tiêu\n{duyetCoChiTieu * 100.0 / tongChiTieu:0.#}% ({duyetCoChiTieu}/{tongChiTieu})"
+                : "Đạt chỉ tiêu\nChưa đặt chỉ tiêu";
         }
         catch (Exception ex)
         {
             MessageBox.Show("Không tải được số liệu thống kê: " + ex.Message, "Lỗi",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+    }
+
+    // Khóa đạt hoặc vượt chỉ tiêu thì phần trăm hiện màu xanh
+    private void dgvThongKe_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+    {
+        if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+        if (dgvThongKe.Columns[e.ColumnIndex].Name != "colTyLeChiTieu") return;
+        if (dgvThongKe.Rows[e.RowIndex].DataBoundItem is ThongKeItem x && x.ChiTieu > 0 && x.DaDuyet >= x.ChiTieu)
+            e.CellStyle.ForeColor = Color.Green;
     }
 
     private void cboDot_SelectedIndexChanged(object? sender, EventArgs e)
@@ -126,12 +134,12 @@ public partial class ucThongKe : UserControl
 
         try
         {
-            const int soCot = 8;
+            const int soCot = 10;
             using var wb = new XLWorkbook();
             var ws = wb.Worksheets.Add("Thống kê");
 
             // Tiêu đề và thông tin chung
-            ws.Cell(1, 1).Value = "THỐNG KÊ HỒ SƠ ĐĂNG KÝ";
+            ws.Cell(1, 1).Value = "THỐNG KÊ HỒ SƠ ĐĂNG KÝ VÀ CHỈ TIÊU";
             var tieuDe = ws.Range(1, 1, 1, soCot);
             tieuDe.Merge();
             tieuDe.Style.Font.Bold = true;
@@ -142,7 +150,8 @@ public partial class ucThongKe : UserControl
             ws.Cell(3, 1).Value = $"Ngày xuất: {DateTime.Now:dd/MM/yyyy HH:mm}";
 
             // Dòng tiêu đề của bảng
-            string[] tenCot = { "STT", "Đợt Tuyển Sinh", "Khóa Học", "Tổng Hồ Sơ", "Chờ Xử Lý", "Đã Duyệt", "Đã Hủy", "Tỷ Lệ Duyệt" };
+            string[] tenCot = { "STT", "Đợt Tuyển Sinh", "Khóa Học", "Chỉ Tiêu", "Tổng Hồ Sơ", "Chờ Xử Lý",
+                                "Đã Duyệt", "Đã Hủy", "Tỷ Lệ Duyệt", "Đạt Chỉ Tiêu" };
             for (int i = 0; i < tenCot.Length; i++)
                 ws.Cell(5, i + 1).Value = tenCot[i];
 
@@ -154,27 +163,33 @@ public partial class ucThongKe : UserControl
                 ws.Cell(dong, 1).Value = stt++;
                 ws.Cell(dong, 2).Value = x.TenDot;
                 ws.Cell(dong, 3).Value = x.TenKhoaHoc;
-                ws.Cell(dong, 4).Value = x.Tong;
-                ws.Cell(dong, 5).Value = x.ChoXuLy;
-                ws.Cell(dong, 6).Value = x.DaDuyet;
-                ws.Cell(dong, 7).Value = x.DaHuy;
-                if (x.Tong > 0) ws.Cell(dong, 8).Value = (double)x.DaDuyet / x.Tong;
+                ws.Cell(dong, 4).Value = x.ChiTieu;
+                ws.Cell(dong, 5).Value = x.Tong;
+                ws.Cell(dong, 6).Value = x.ChoXuLy;
+                ws.Cell(dong, 7).Value = x.DaDuyet;
+                ws.Cell(dong, 8).Value = x.DaHuy;
+                if (x.Tong > 0) ws.Cell(dong, 9).Value = (double)x.DaDuyet / x.Tong;
+                if (x.DatChiTieu.HasValue) ws.Cell(dong, 10).Value = x.DatChiTieu.Value;
                 dong++;
             }
 
             // Dòng tổng cộng
             int tong = _ds.Sum(x => x.Tong);
             int duyet = _ds.Sum(x => x.DaDuyet);
+            int tongChiTieu = _ds.Sum(x => x.ChiTieu);
+            int duyetCoChiTieu = _ds.Where(x => x.ChiTieu > 0).Sum(x => x.DaDuyet);
             ws.Cell(dong, 2).Value = "Tổng Cộng";
-            ws.Cell(dong, 4).Value = tong;
-            ws.Cell(dong, 5).Value = _ds.Sum(x => x.ChoXuLy);
-            ws.Cell(dong, 6).Value = duyet;
-            ws.Cell(dong, 7).Value = _ds.Sum(x => x.DaHuy);
-            if (tong > 0) ws.Cell(dong, 8).Value = (double)duyet / tong;
+            ws.Cell(dong, 4).Value = tongChiTieu;
+            ws.Cell(dong, 5).Value = tong;
+            ws.Cell(dong, 6).Value = _ds.Sum(x => x.ChoXuLy);
+            ws.Cell(dong, 7).Value = duyet;
+            ws.Cell(dong, 8).Value = _ds.Sum(x => x.DaHuy);
+            if (tong > 0) ws.Cell(dong, 9).Value = (double)duyet / tong;
+            if (tongChiTieu > 0) ws.Cell(dong, 10).Value = (double)duyetCoChiTieu / tongChiTieu;
 
             // Định dạng
             ws.Range(dong, 1, dong, soCot).Style.Font.Bold = true;
-            ws.Range(6, 8, dong, 8).Style.NumberFormat.Format = "0.0%";
+            ws.Range(6, 9, dong, 10).Style.NumberFormat.Format = "0.0%";
 
             var dongTieuDe = ws.Range(5, 1, 5, soCot);
             dongTieuDe.Style.Font.Bold = true;

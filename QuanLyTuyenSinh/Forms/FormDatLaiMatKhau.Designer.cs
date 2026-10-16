@@ -34,16 +34,17 @@ namespace QuanLyTuyenSinh.Forms
             lblNguoiDung.Location = new Point(0, 0);
             lblNguoiDung.Margin = new Padding(6, 0, 6, 0);
             lblNguoiDung.Name = "lblNguoiDung";
-            lblNguoiDung.Size = new Size(800, 158);
+            lblNguoiDung.Size = new Size(896, 158);
             lblNguoiDung.TabIndex = 0;
             lblNguoiDung.Text = "Đặt Lại Mật Khẩu";
             lblNguoiDung.TextAlign = ContentAlignment.MiddleCenter;
+            lblNguoiDung.Click += lblNguoiDung_Click;
             // 
             // lblMatKhauMoi
             // 
             lblMatKhauMoi.AutoSize = true;
             lblMatKhauMoi.Font = new Font("Segoe UI Semibold", 12.125F, FontStyle.Bold | FontStyle.Italic);
-            lblMatKhauMoi.Location = new Point(112, 171);
+            lblMatKhauMoi.Location = new Point(163, 168);
             lblMatKhauMoi.Margin = new Padding(6, 0, 6, 0);
             lblMatKhauMoi.Name = "lblMatKhauMoi";
             lblMatKhauMoi.Size = new Size(229, 45);
@@ -52,7 +53,7 @@ namespace QuanLyTuyenSinh.Forms
             // 
             // txtMatKhauMoi
             // 
-            txtMatKhauMoi.Location = new Point(354, 171);
+            txtMatKhauMoi.Location = new Point(405, 168);
             txtMatKhauMoi.Margin = new Padding(6, 7, 6, 7);
             txtMatKhauMoi.Name = "txtMatKhauMoi";
             txtMatKhauMoi.Size = new Size(391, 42);
@@ -63,7 +64,7 @@ namespace QuanLyTuyenSinh.Forms
             // 
             lblNhapLai.AutoSize = true;
             lblNhapLai.Font = new Font("Segoe UI Semibold", 12.125F, FontStyle.Bold | FontStyle.Italic);
-            lblNhapLai.Location = new Point(41, 254);
+            lblNhapLai.Location = new Point(92, 251);
             lblNhapLai.Margin = new Padding(6, 0, 6, 0);
             lblNhapLai.Name = "lblNhapLai";
             lblNhapLai.Size = new Size(303, 45);
@@ -72,7 +73,7 @@ namespace QuanLyTuyenSinh.Forms
             // 
             // txtNhapLai
             // 
-            txtNhapLai.Location = new Point(354, 254);
+            txtNhapLai.Location = new Point(405, 251);
             txtNhapLai.Margin = new Padding(6, 7, 6, 7);
             txtNhapLai.Name = "txtNhapLai";
             txtNhapLai.Size = new Size(391, 42);
@@ -81,7 +82,7 @@ namespace QuanLyTuyenSinh.Forms
             // 
             // btnLuu
             // 
-            btnLuu.Location = new Point(204, 366);
+            btnLuu.Location = new Point(257, 363);
             btnLuu.Margin = new Padding(6, 7, 6, 7);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(190, 82);
@@ -93,7 +94,7 @@ namespace QuanLyTuyenSinh.Forms
             // btnHuy
             // 
             btnHuy.DialogResult = DialogResult.Cancel;
-            btnHuy.Location = new Point(441, 366);
+            btnHuy.Location = new Point(494, 363);
             btnHuy.Margin = new Padding(6, 7, 6, 7);
             btnHuy.Name = "btnHuy";
             btnHuy.Size = new Size(190, 82);
@@ -107,7 +108,7 @@ namespace QuanLyTuyenSinh.Forms
             AutoScaleDimensions = new SizeF(14F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnHuy;
-            ClientSize = new Size(800, 501);
+            ClientSize = new Size(896, 517);
             Controls.Add(btnHuy);
             Controls.Add(btnLuu);
             Controls.Add(txtNhapLai);

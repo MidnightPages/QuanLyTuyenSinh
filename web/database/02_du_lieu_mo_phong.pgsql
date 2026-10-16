@@ -48,27 +48,27 @@ INSERT INTO KhoaHoc (MaKhoaHoc, TenKhoaHoc, HocPhi, ThoiLuong, TrangThai) VALUES
   (8, 'Khóa học H', 4500000, '4 tháng (40 buổi)', 'Đã ngừng');
 
 -- Bảng 5. DotKhoaHoc (khóa học được mở trong từng đợt)
-INSERT INTO DotKhoaHoc (MaDotKhoaHoc, MaDot, MaKhoaHoc) VALUES
-  (1, 1, 1),
-  (2, 1, 2),
-  (3, 1, 3),
-  (4, 1, 5),
-  (5, 1, 8),
-  (6, 2, 1),
-  (7, 2, 3),
-  (8, 2, 4),
-  (9, 2, 7),
-  (10, 3, 1),
-  (11, 3, 2),
-  (12, 3, 3),
-  (13, 3, 4),
-  (14, 3, 5),
-  (15, 3, 6),
-  (16, 3, 7),
-  (17, 4, 1),
-  (18, 4, 2),
-  (19, 4, 3),
-  (20, 4, 6);
+INSERT INTO DotKhoaHoc (MaDotKhoaHoc, MaDot, MaKhoaHoc, ChiTieu) VALUES
+  (1,  1, 1, 30),
+  (2,  1, 2, 25),
+  (3,  1, 3, 40),
+  (4,  1, 5, 20),
+  (5,  1, 8, 15),
+  (6,  2, 1, 25),
+  (7,  2, 3, 35),
+  (8,  2, 4, 20),
+  (9,  2, 7, 30),
+  (10, 3, 1, 30),
+  (11, 3, 2, 25),
+  (12, 3, 3, 40),
+  (13, 3, 4, 20),
+  (14, 3, 5, 25),
+  (15, 3, 6, 15),
+  (16, 4, 2, 20),
+  (17, 4, 3, 30),
+  (18, 4, 4, 25),
+  (19, 4, 5, 20),
+  (20, 4, 6, 15);
 
 -- Bảng 6. PhanCongTuyenSinh (một khóa trong một đợt có thể có nhiều nhân viên)
 INSERT INTO PhanCongTuyenSinh (MaPhanCong, MaNhanVien, MaDotKhoaHoc) VALUES

@@ -84,17 +84,24 @@ public partial class ucKhoaHoc : UserControl
 
     private void Xoa(KhoaHoc khoaHoc)
     {
-        var traLoi = MessageBox.Show($"Bạn có chắc muốn xóa khóa học \"{khoaHoc.TenKhoaHoc}\"?",
-            "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        if (traLoi != DialogResult.Yes) return;
-
         try
         {
-            bool daXoaHan = KhoaHocRepo.XoaHoacNgung(khoaHoc.MaKhoaHoc);
-            MessageBox.Show(
-                daXoaHan
-                    ? "Đã xóa khóa học."
-                    : "Khóa học đã thuộc đợt tuyển sinh nên không xóa hẳn mà được chuyển sang trạng thái Đã ngừng.",
+            var (soDot, soHoSo, soPhanCong) = KhoaHocRepo.DemDuLieuLienQuan(khoaHoc.MaKhoaHoc);
+
+            string canhBao =
+                $"Bạn có chắc muốn xóa khóa học \"{khoaHoc.TenKhoaHoc}\" không?\n\n" +
+                "Vì việc xóa sẽ xóa vĩnh viễn toàn bộ dữ liệu liên quan đến khóa học này:\n" +
+                $"   •  {soHoSo} hồ sơ đăng ký\n" +
+                $"   •  {soPhanCong} lượt phân công nhân viên\n" +
+                $"   •  khóa học bị gỡ khỏi {soDot} đợt tuyển sinh\n\n" +
+                "Dữ liệu đã xóa KHÔNG thể khôi phục.";
+
+            var traLoi = MessageBox.Show(canhBao, "Cảnh báo xóa khóa học",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (traLoi != DialogResult.Yes) return;
+
+            KhoaHocRepo.XoaVinhVien(khoaHoc.MaKhoaHoc);
+            MessageBox.Show($"Đã xóa khóa học \"{khoaHoc.TenKhoaHoc}\" và toàn bộ dữ liệu liên quan.",
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             TaiDuLieu();
         }

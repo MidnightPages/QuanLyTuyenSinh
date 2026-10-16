@@ -350,4 +350,45 @@ public static class DotRepo
         tx.Commit();
         return null;
     }
+
+    /// <summary>Đếm dữ liệu sẽ bị xóa cùng đợt này (để cảnh báo trước khi xóa).</summary>
+    public static (int SoKhoaHoc, int SoHoSo, int SoPhanCong) DemDuLieuLienQuan(int maDot)
+    {
+        const string sql = @"
+            SELECT (SELECT COUNT(*) FROM DotKhoaHoc WHERE MaDot = @id),
+                   (SELECT COUNT(*) FROM HoSoDangKy h
+                    JOIN DotKhoaHoc dk ON dk.MaDotKhoaHoc = h.MaDotKhoaHoc
+                    WHERE dk.MaDot = @id),
+                   (SELECT COUNT(*) FROM PhanCongTuyenSinh pc
+                    JOIN DotKhoaHoc dk ON dk.MaDotKhoaHoc = pc.MaDotKhoaHoc
+                    WHERE dk.MaDot = @id)";
+
+        using var conn = Db.TaoKetNoi();
+        conn.Open();
+        using var cmd = new NpgsqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("id", maDot);
+        using var rd = cmd.ExecuteReader();
+        rd.Read();
+        return ((int)rd.GetInt64(0), (int)rd.GetInt64(1), (int)rd.GetInt64(2));
+    }
+
+    /// <summary>Xóa vĩnh viễn đợt cùng toàn bộ hồ sơ, phân công và liên kết khóa-đợt của đợt đó.</summary>
+    public static void XoaVinhVien(int maDot)
+    {
+        const string sql = @"
+            DELETE FROM HoSoDangKy
+            WHERE MaDotKhoaHoc IN (SELECT MaDotKhoaHoc FROM DotKhoaHoc WHERE MaDot = @id);
+            DELETE FROM PhanCongTuyenSinh
+            WHERE MaDotKhoaHoc IN (SELECT MaDotKhoaHoc FROM DotKhoaHoc WHERE MaDot = @id);
+            DELETE FROM DotKhoaHoc WHERE MaDot = @id;
+            DELETE FROM DotTuyenSinh WHERE MaDot = @id;";
+
+        using var conn = Db.TaoKetNoi();
+        conn.Open();
+        using var tx = conn.BeginTransaction();
+        using var cmd = new NpgsqlCommand(sql, conn, tx);
+        cmd.Parameters.AddWithValue("id", maDot);
+        cmd.ExecuteNonQuery();
+        tx.Commit();
+    }
 }

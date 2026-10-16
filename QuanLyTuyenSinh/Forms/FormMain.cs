@@ -57,7 +57,8 @@ public partial class FormMain : Form
             "Khóa học" => new ucKhoaHoc(),
             "Đợt tuyển sinh" => new ucDotTuyenSinh(),
             "Nhân viên" => new ucNhanVien(),
-            "Phân công" or "Phân công của tôi" => new ucPhanCong(),
+            "Phân công" => new ucPhanCong(),
+            "Phân công của tôi" => new ucPhanCongCuaToi(),
             "Hồ sơ" or "Hồ sơ (chỉ xem)" => new ucHoSo(),
             "Thống kê" => new ucThongKe(),
             _ => new Label

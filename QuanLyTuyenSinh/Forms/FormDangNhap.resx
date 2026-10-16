@@ -117,193 +117,283 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;tendn.ZOrder" xml:space="preserve">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>14, 36</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtTenDangNhap.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;lblThongBao.Type" xml:space="preserve">
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;btnDemoAdmin.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 45</value>
+  </data>
+  <data name="&gt;&gt;btnDemoLan.Name" xml:space="preserve">
+    <value>btnDemoLan</value>
+  </data>
+  <data name="&gt;&gt;tieude.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnDangNhap.Name" xml:space="preserve">
-    <value>btnDangNhap</value>
+  <data name="&gt;&gt;btnDemoHung.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDangNhap.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>510, 59</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="&gt;&gt;mkdn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnDangNhap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 332</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnDemoAdmin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblThongBao.Name" xml:space="preserve">
-    <value>lblThongBao</value>
   </data>
   <data name="&gt;&gt;txtTenDangNhap.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtMatKhau.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtMatKhau.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 45</value>
-  </data>
-  <data name="&gt;&gt;txtMatKhau.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="txtMatKhau.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 232</value>
-  </data>
-  <data name="&gt;&gt;btnThoat.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblThongBao.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tendn.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tieude.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mkdn.Name" xml:space="preserve">
-    <value>mkdn</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>FormDangNhap</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtMatKhau.Name" xml:space="preserve">
-    <value>txtMatKhau</value>
-  </data>
-  <data name="&gt;&gt;tieude.Name" xml:space="preserve">
-    <value>tieude</value>
-  </data>
-  <data name="&gt;&gt;txtTenDangNhap.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;txtTenDangNhap.Name" xml:space="preserve">
-    <value>txtTenDangNhap</value>
-  </data>
-  <data name="btnThoat.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;btnThoat.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tendn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnThoat.Name" xml:space="preserve">
-    <value>btnThoat</value>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btnDangNhap.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="txtMatKhau.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;btnDemoAdmin.Name" xml:space="preserve">
+    <value>btnDemoAdmin</value>
   </data>
-  <data name="mkdn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 232</value>
+  <data name="&gt;&gt;btnDemoHung.Name" xml:space="preserve">
+    <value>btnDemoHung</value>
   </data>
-  <data name="&gt;&gt;mkdn.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="txtTenDangNhap.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;btnDangNhap.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tendn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="tieude.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 45</value>
+  <data name="&gt;&gt;btnThoat.Name" xml:space="preserve">
+    <value>btnThoat</value>
   </data>
   <data name="&gt;&gt;mkdn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tendn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 151</value>
-  </data>
-  <data name="mkdn.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tieude.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>14, 36</value>
-  </data>
-  <data name="btnThoat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 332</value>
-  </data>
-  <data name="&gt;&gt;btnThoat.Type" xml:space="preserve">
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tendn.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormDangNhap</value>
+  <data name="&gt;&gt;txtMatKhau.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnDemoHung.Location" type="System.Drawing.Point, System.Drawing">
+    <value>510, 59</value>
+  </data>
+  <data name="btnDemoAdmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 59</value>
+  </data>
+  <data name="&gt;&gt;tendn.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;mkdn.Name" xml:space="preserve">
+    <value>mkdn</value>
+  </data>
+  <data name="&gt;&gt;lblThongBao.Name" xml:space="preserve">
+    <value>lblThongBao</value>
+  </data>
+  <data name="btnDangNhap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 332</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 467</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnThoat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tendn.Name" xml:space="preserve">
     <value>tendn</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tieude.Name" xml:space="preserve">
+    <value>tieude</value>
+  </data>
+  <data name="txtMatKhau.Location" type="System.Drawing.Point, System.Drawing">
+    <value>294, 232</value>
+  </data>
+  <data name="tieude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 45</value>
+  </data>
+  <data name="&gt;&gt;btnDangNhap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnThoat.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;lblThongBao.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;btnDemoAdmin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtTenDangNhap.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="txtTenDangNhap.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tieude.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="txtTenDangNhap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 155</value>
-  </data>
-  <data name="&gt;&gt;lblThongBao.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblThongBao.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 428</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>FormDangNhap</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>800, 450</value>
   </data>
-  <data name="&gt;&gt;btnDangNhap.ZOrder" xml:space="preserve">
+  <data name="tendn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 151</value>
+  </data>
+  <data name="mkdn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 232</value>
+  </data>
+  <data name="&gt;&gt;mkdn.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtMatKhau.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mkdn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblThongBao.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtMatKhau.Name" xml:space="preserve">
+    <value>txtMatKhau</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblThongBao.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnDemoLan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>269, 59</value>
+  </data>
+  <data name="&gt;&gt;btnDemoLan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDemoLan.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnDemoHung.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="btnThoat.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txtTenDangNhap.Name" xml:space="preserve">
+    <value>txtTenDangNhap</value>
+  </data>
+  <data name="txtTenDangNhap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>294, 155</value>
+  </data>
+  <data name="&gt;&gt;btnDangNhap.Name" xml:space="preserve">
+    <value>btnDangNhap</value>
+  </data>
+  <data name="&gt;&gt;lblThongBao.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tieude.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="lblThongBao.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnDemoAdmin.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;txtMatKhau.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="btnThoat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 332</value>
+  </data>
+  <data name="txtMatKhau.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnDemoLan.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="btnDangNhap.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnThoat.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tendn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormDangNhap</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
   <data name="tieude.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtTenDangNhap.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnDemoLan.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="mkdn.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnDemoHung.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDemoHung.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tieude.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblThongBao.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 428</value>
+  </data>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
     <value>vi-VN</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
 </root>

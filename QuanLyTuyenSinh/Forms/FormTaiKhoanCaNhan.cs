@@ -33,10 +33,11 @@ public partial class FormTaiKhoanCaNhan : Form
 
         if (!PhienDangNhap.LaNhanVien)
         {
-            // Quản trị viên: ẩn phần đổi mật khẩu và thu gọn form
+            // Quản trị viên: ẩn phần đổi mật khẩu, đưa nút Đóng lên đúng chỗ nhóm đó đang đứng
+            // rồi thu gọn form vừa khít với nút Đóng. Dùng vị trí tương đối nên đúng với mọi bố cục.
             grpMatKhau.Visible = false;
-            btnDong.Top = 310;
-            ClientSize = new Size(ClientSize.Width, 360);
+            btnDong.Top = grpMatKhau.Top;
+            ClientSize = new Size(ClientSize.Width, btnDong.Bottom + 20);
         }
     }
 

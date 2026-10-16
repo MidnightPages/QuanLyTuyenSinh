@@ -37,6 +37,11 @@
             btnDangNhap = new Button();
             btnThoat = new Button();
             lblThongBao = new Label();
+            groupBox1 = new GroupBox();
+            btnDemoHung = new Button();
+            btnDemoLan = new Button();
+            btnDemoAdmin = new Button();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // tieude
@@ -90,12 +95,44 @@
             lblThongBao.ForeColor = Color.Firebrick;
             lblThongBao.Name = "lblThongBao";
             // 
+            // groupBox1
+            // 
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.BackColor = Color.WhiteSmoke;
+            groupBox1.Controls.Add(btnDemoHung);
+            groupBox1.Controls.Add(btnDemoLan);
+            groupBox1.Controls.Add(btnDemoAdmin);
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
+            // 
+            // btnDemoHung
+            // 
+            resources.ApplyResources(btnDemoHung, "btnDemoHung");
+            btnDemoHung.Name = "btnDemoHung";
+            btnDemoHung.UseVisualStyleBackColor = true;
+            btnDemoHung.Click += btnDemoHung_Click;
+            // 
+            // btnDemoLan
+            // 
+            resources.ApplyResources(btnDemoLan, "btnDemoLan");
+            btnDemoLan.Name = "btnDemoLan";
+            btnDemoLan.UseVisualStyleBackColor = true;
+            btnDemoLan.Click += btnDemoLan_Click;
+            // 
+            // btnDemoAdmin
+            // 
+            resources.ApplyResources(btnDemoAdmin, "btnDemoAdmin");
+            btnDemoAdmin.Name = "btnDemoAdmin";
+            btnDemoAdmin.UseVisualStyleBackColor = true;
+            btnDemoAdmin.Click += btnDemoAdmin_Click;
+            // 
             // FormDangNhap
             // 
             AcceptButton = btnDangNhap;
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnThoat;
+            Controls.Add(groupBox1);
             Controls.Add(lblThongBao);
             Controls.Add(btnThoat);
             Controls.Add(btnDangNhap);
@@ -107,6 +144,7 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "FormDangNhap";
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -121,5 +159,9 @@
         private Button btnDangNhap;
         private Button btnThoat;
         private Label lblThongBao;
+        private GroupBox groupBox1;
+        private Button btnDemoAdmin;
+        private Button btnDemoHung;
+        private Button btnDemoLan;
     }
 }

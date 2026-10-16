@@ -5,7 +5,7 @@ namespace QuanLyTuyenSinh.Data;
 public static class Db
 {
     private const string ConnectionString =
-        "Host=localhost;Port=5432;Database=tuyensinh;Username=postgres;Password=matkhaucuaban";
+        "Host=localhost;Port=5432;Database=tuyensinh;Username=postgres;Password=thuynga;";
 
     public static NpgsqlConnection TaoKetNoi() => new NpgsqlConnection(ConnectionString);
 

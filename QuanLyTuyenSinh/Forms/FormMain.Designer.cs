@@ -18,6 +18,7 @@ namespace QuanLyTuyenSinh.Forms
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             pnlTop = new Panel();
             tenht = new Label();
             lblNguoiDung = new Label();
@@ -118,6 +119,7 @@ namespace QuanLyTuyenSinh.Forms
             Controls.Add(pnlNoiDung);
             Controls.Add(flpMenu);
             Controls.Add(pnlTop);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6, 7, 6, 7);
             MinimumSize = new Size(1774, 1221);
             Name = "FormMain";

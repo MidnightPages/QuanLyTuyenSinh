@@ -14,6 +14,7 @@ public partial class ucPhanCong : UserControl
 {
     private bool _sanSang;   // chỉ tải dữ liệu sau khi control đã sẵn sàng (tránh gọi CSDL lúc thiết kế)
     private List<PhanCongKhoaItem> _ds = new();
+    private Dictionary<int, string> _trangThaiDot = new();   // mã đợt -> trạng thái
     private readonly bool _laQuanTri = PhienDangNhap.LaQuanTri;
     private readonly int? _maNhanVien = PhienDangNhap.LaNhanVien ? PhienDangNhap.HienTai?.MaNhanVien : null;
 
@@ -44,6 +45,7 @@ public partial class ucPhanCong : UserControl
             if (_laQuanTri)
             {
                 var tatCa = DotRepo.LayDanhSach("", null);
+                _trangThaiDot = tatCa.ToDictionary(d => d.MaDot, d => d.TrangThai);
                 dots = tatCa.Select(d => new LuaChon(d.MaDot, d.TenDot)).ToList();
                 // Mặc định chọn đợt đang tuyển sinh (nếu có)
                 int viTri = tatCa.FindIndex(d => d.TrangThai == "Đang tuyển sinh");
@@ -95,6 +97,20 @@ public partial class ucPhanCong : UserControl
         }
     }
 
+    private bool DotDaNgung() =>
+    cboDot.SelectedValue is int maDot &&
+    _trangThaiDot.TryGetValue(maDot, out var trangThai) &&
+    trangThai == "Đã ngừng";
+
+    // Đợt đã ngừng: giữ nguyên nút nhưng không cho thay đổi phân công
+    private bool CanhBaoDotDaNgung()
+    {
+        if (!DotDaNgung()) return false;
+        MessageBox.Show("Đợt tuyển sinh này đã ngừng nên không thể thay đổi phân công.",
+            "Đợt đã ngừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        return true;
+    }
+
     private void cboDot_SelectedIndexChanged(object? sender, EventArgs e) => TaiDuLieu();
 
     // Bấm nút Sửa / Xóa hết ngay trên dòng của khóa học
@@ -113,12 +129,16 @@ public partial class ucPhanCong : UserControl
     // Hộp thoại có đủ nhân viên kèm hộp kiểm: tích để thêm, bỏ tích để gỡ
     private void Sua(PhanCongKhoaItem khoa)
     {
+        if (CanhBaoDotDaNgung()) return;
+
         using var form = new FormChonNhanVien(khoa, cboDot.Text, chiThem: false);
         if (form.ShowDialog(FindForm()) == DialogResult.OK) TaiDuLieu();
     }
 
     private void XoaHet(PhanCongKhoaItem khoa)
     {
+        if (CanhBaoDotDaNgung()) return;
+
         if (khoa.SoNhanVien == 0)
         {
             MessageBox.Show("Khóa học này chưa có nhân viên phụ trách.", "Thông báo",

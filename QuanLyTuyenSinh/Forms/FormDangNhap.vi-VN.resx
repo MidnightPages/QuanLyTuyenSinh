@@ -125,6 +125,9 @@
   <data name="tieude.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Black, 18pt, style=Bold</value>
   </data>
+  <data name="tieude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 45</value>
+  </data>
   <data name="tieude.Size" type="System.Drawing.Size, System.Drawing">
     <value>292, 65</value>
   </data>
@@ -140,14 +143,23 @@
   <data name="tendn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Semibold, 12pt, style=Bold, Italic</value>
   </data>
+  <data name="tendn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 151</value>
+  </data>
   <data name="tendn.Size" type="System.Drawing.Size, System.Drawing">
     <value>237, 45</value>
   </data>
   <data name="tendn.Text" xml:space="preserve">
     <value>Tên đăng nhập</value>
   </data>
+  <data name="txtTenDangNhap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>356, 155</value>
+  </data>
   <data name="txtTenDangNhap.Size" type="System.Drawing.Size, System.Drawing">
     <value>314, 42</value>
+  </data>
+  <data name="txtMatKhau.Location" type="System.Drawing.Point, System.Drawing">
+    <value>356, 232</value>
   </data>
   <data name="txtMatKhau.Size" type="System.Drawing.Size, System.Drawing">
     <value>314, 42</value>
@@ -162,6 +174,9 @@
   <data name="mkdn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="mkdn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>193, 232</value>
+  </data>
   <data name="mkdn.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 45</value>
   </data>
@@ -170,6 +185,9 @@
   </data>
   <data name="btnDangNhap.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt, style=Bold</value>
+  </data>
+  <data name="btnDangNhap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 332</value>
   </data>
   <data name="btnDangNhap.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 61</value>
@@ -183,6 +201,9 @@
   <data name="btnThoat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="btnThoat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>442, 332</value>
+  </data>
   <data name="btnThoat.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 61</value>
   </data>
@@ -195,8 +216,59 @@
   <data name="lblThongBao.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 36</value>
   </data>
+  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="btnDemoHung.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.125pt</value>
+  </data>
+  <data name="btnDemoHung.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnDemoHung.Location" type="System.Drawing.Point, System.Drawing">
+    <value>510, 59</value>
+  </data>
+  <data name="btnDemoHung.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 70</value>
+  </data>
+  <data name="btnDemoHung.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnDemoHung.Text" xml:space="preserve">
+    <value>Nhân viên Hùng</value>
+  </data>
+  <data name="btnDemoLan.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.125pt</value>
+  </data>
+  <data name="btnDemoLan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnDemoLan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 70</value>
+  </data>
+  <data name="btnDemoLan.Text" xml:space="preserve">
+    <value>Nhân viên Lan</value>
+  </data>
+  <data name="btnDemoAdmin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.125pt</value>
+  </data>
+  <data name="btnDemoAdmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 70</value>
+  </data>
+  <data name="btnDemoAdmin.Text" xml:space="preserve">
+    <value>Quản trị viên</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Semibold, 10.125pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>758, 154</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Đăng Nhập Nhanh</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>674, 486</value>
+    <value>782, 633</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

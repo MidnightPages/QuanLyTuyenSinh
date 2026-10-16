@@ -8,6 +8,7 @@ namespace QuanLyTuyenSinh.Models;
 public class PhanCongKhoaItem
 {
     public int MaDotKhoaHoc { get; set; }
+    public string TenDot { get; set; } = "";
     public int MaKhoaHoc { get; set; }
     public string TenKhoaHoc { get; set; } = "";
     public string NhanVienPhuTrach { get; set; } = "";

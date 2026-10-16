@@ -262,6 +262,19 @@ public static class PhanCongRepo
         conn.Open();
         using var tx = conn.BeginTransaction();
 
+        // Đợt đã ngừng thì không thay đổi phân công
+        using (var ktDot = new NpgsqlCommand(@"
+            SELECT d.TrangThai
+            FROM DotKhoaHoc dk
+            JOIN DotTuyenSinh d ON d.MaDot = dk.MaDot
+            WHERE dk.MaDotKhoaHoc = @dk", conn, tx))
+        {
+            ktDot.Parameters.AddWithValue("dk", maDotKhoaHoc);
+            string? trangThaiDot = ktDot.ExecuteScalar() as string;
+            if (trangThaiDot == null) return "Không tìm thấy khóa học trong đợt (có thể đã bị xóa).";
+            if (trangThaiDot == "Đã ngừng") return "Đợt tuyển sinh đã ngừng nên không thể thay đổi phân công.";
+        }
+
         var hienTai = new HashSet<int>();
         using (var cmd = new NpgsqlCommand(
             "SELECT MaNhanVien FROM PhanCongTuyenSinh WHERE MaDotKhoaHoc = @dk", conn, tx))
@@ -301,5 +314,54 @@ public static class PhanCongRepo
 
         tx.Commit();
         return null;
+    }
+
+    /// <summary>
+    /// Các khóa học (ở mọi đợt) mà nhân viên đang phụ trách, kèm tên tất cả nhân viên của khóa đó.
+    /// maDot, maKhoaHoc = null nghĩa là không lọc.
+    /// </summary>
+    public static List<PhanCongKhoaItem> LayPhanCongCuaToi(int maNhanVien, int? maDot, int? maKhoaHoc)
+    {
+        const string sql = @"
+            SELECT dk.MaDotKhoaHoc, k.MaKhoaHoc, k.TenKhoaHoc, d.TenDot,
+                   COALESCE((SELECT string_agg(nv.HoTen, ', ' ORDER BY nv.HoTen)
+                             FROM PhanCongTuyenSinh pc
+                             JOIN NhanVien nv ON nv.MaNhanVien = pc.MaNhanVien
+                             WHERE pc.MaDotKhoaHoc = dk.MaDotKhoaHoc), '') AS NhanVienPhuTrach,
+                   (SELECT COUNT(*) FROM PhanCongTuyenSinh pc
+                    WHERE pc.MaDotKhoaHoc = dk.MaDotKhoaHoc) AS SoNhanVien,
+                   (SELECT COUNT(*) FROM HoSoDangKy h
+                    WHERE h.MaDotKhoaHoc = dk.MaDotKhoaHoc) AS SoHoSo
+            FROM DotKhoaHoc dk
+            JOIN DotTuyenSinh d ON d.MaDot = dk.MaDot
+            JOIN KhoaHoc k ON k.MaKhoaHoc = dk.MaKhoaHoc
+            WHERE EXISTS (SELECT 1 FROM PhanCongTuyenSinh pcx
+                          WHERE pcx.MaDotKhoaHoc = dk.MaDotKhoaHoc AND pcx.MaNhanVien = @nv)
+              AND (@dot IS NULL OR d.MaDot = @dot)
+              AND (@kh IS NULL OR k.MaKhoaHoc = @kh)
+            ORDER BY d.NgayBatDau DESC, d.MaDot DESC, k.TenKhoaHoc";
+
+        var ds = new List<PhanCongKhoaItem>();
+        using var conn = Db.TaoKetNoi();
+        conn.Open();
+        using var cmd = new NpgsqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("nv", maNhanVien);
+        cmd.Parameters.Add(Sql.So("dot", maDot));
+        cmd.Parameters.Add(Sql.So("kh", maKhoaHoc));
+        using var rd = cmd.ExecuteReader();
+        while (rd.Read())
+        {
+            ds.Add(new PhanCongKhoaItem
+            {
+                MaDotKhoaHoc = rd.GetInt32(0),
+                MaKhoaHoc = rd.GetInt32(1),
+                TenKhoaHoc = rd.GetString(2),
+                TenDot = rd.GetString(3),
+                NhanVienPhuTrach = rd.GetString(4),
+                SoNhanVien = (int)rd.GetInt64(5),
+                SoHoSo = (int)rd.GetInt64(6)
+            });
+        }
+        return ds;
     }
 }

@@ -12,7 +12,7 @@ public partial class FormDatLaiMatKhau : Form
     {
         InitializeComponent();
         _nv = nv;
-        lblNguoiDung.Text = $"Đặt lại mật khẩu cho: {nv.HoTen} ({nv.TenDangNhap})";
+        lblNguoiDung.Text = $"Đặt lại mật khẩu ({nv.TenDangNhap})";
     }
 
     private void btnLuu_Click(object? sender, EventArgs e)
@@ -42,5 +42,10 @@ public partial class FormDatLaiMatKhau : Form
         {
             MessageBox.Show("Không đặt lại được: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+    }
+
+    private void lblNguoiDung_Click(object sender, EventArgs e)
+    {
+
     }
 }

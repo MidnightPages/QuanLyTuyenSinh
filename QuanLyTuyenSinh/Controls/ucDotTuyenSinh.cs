@@ -100,17 +100,24 @@ public partial class ucDotTuyenSinh : UserControl
     {
         if (!PhanQuyen.CoTheThemXoaDot) return;
 
-        var traLoi = MessageBox.Show($"Bạn có chắc muốn xóa \"{dot.TenDot}\"?",
-            "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        if (traLoi != DialogResult.Yes) return;
-
         try
         {
-            bool daXoaHan = DotRepo.XoaHoacNgung(dot.MaDot);
-            MessageBox.Show(
-                daXoaHan
-                    ? "Đã xóa đợt tuyển sinh."
-                    : "Đợt đã có hồ sơ hoặc phân công nên không xóa hẳn mà được chuyển sang trạng thái Đã ngừng.",
+            var (soKhoaHoc, soHoSo, soPhanCong) = DotRepo.DemDuLieuLienQuan(dot.MaDot);
+
+            string canhBao =
+                $"Bạn có chắc muốn xóa đợt \"{dot.TenDot}\" không?\n\n" +
+                "Vì việc xóa sẽ xóa vĩnh viễn toàn bộ dữ liệu liên quan đến đợt này:\n" +
+                $"   •  {soHoSo} hồ sơ đăng ký\n" +
+                $"   •  {soPhanCong} lượt phân công nhân viên\n" +
+                $"   •  {soKhoaHoc} khóa học trong đợt (chỉ gỡ khỏi đợt, khóa học vẫn còn ở mục Khóa học)\n\n" +
+                "Dữ liệu đã xóa KHÔNG thể khôi phục.";
+
+            var traLoi = MessageBox.Show(canhBao, "Cảnh báo xóa đợt tuyển sinh",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (traLoi != DialogResult.Yes) return;
+
+            DotRepo.XoaVinhVien(dot.MaDot);
+            MessageBox.Show($"Đã xóa đợt \"{dot.TenDot}\" và toàn bộ dữ liệu liên quan.",
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             TaiDuLieu();
         }

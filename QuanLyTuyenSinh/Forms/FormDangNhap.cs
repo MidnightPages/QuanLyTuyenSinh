@@ -17,6 +17,17 @@ public partial class FormDangNhap : Form
         InitializeComponent();
     }
 
+    // Đặt thành false để ẩn 3 nút demo khi dùng thật (không muốn lộ tài khoản mẫu)
+    private const bool HienNutDemo = true;
+
+    // Điền tên đăng nhập, mật khẩu rồi bấm nút Đăng nhập như người dùng tự gõ
+    private void DangNhapNhanh(string tenDangNhap, string matKhau)
+    {
+        txtTenDangNhap.Text = tenDangNhap;
+        txtMatKhau.Text = matKhau;
+        btnDangNhap.PerformClick();
+    }
+
     private void btnDangNhap_Click(object sender, EventArgs e)
     {
         lblThongBao.Text = "";
@@ -52,4 +63,13 @@ public partial class FormDangNhap : Form
     {
         DialogResult = DialogResult.Cancel;
     }
+
+    private void btnDemoAdmin_Click(object? sender, EventArgs e) =>
+        DangNhapNhanh("admin", "111111");
+
+    private void btnDemoLan_Click(object? sender, EventArgs e) =>
+        DangNhapNhanh("nv.lan", "123456");
+
+    private void btnDemoHung_Click(object? sender, EventArgs e) =>
+        DangNhapNhanh("nv.hung", "NhanVien@123");
 }

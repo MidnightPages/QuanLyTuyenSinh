@@ -15,6 +15,7 @@ public partial class ucKhoaHoc : UserControl
     {
         InitializeComponent();
         LuoiHelper.DanhSoThuTu(dgvKhoaHoc, "colStt");
+        LuoiHelper.CauHinhChung(dgvKhoaHoc);
 
         cboTrangThai.Items.Add("Tất cả");
         cboTrangThai.Items.AddRange(DanhMuc.TrangThaiKhoaHoc);

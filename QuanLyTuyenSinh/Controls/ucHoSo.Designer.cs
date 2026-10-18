@@ -18,8 +18,8 @@ namespace QuanLyTuyenSinh.Controls
 
         private void InitializeComponent()
         {
-            DataGridViewCellStyle styleNgay = new DataGridViewCellStyle();
-            DataGridViewCellStyle styleGiua = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnlLoc = new Panel();
             lblDot = new Label();
             cboDot = new ComboBox();
@@ -55,7 +55,9 @@ namespace QuanLyTuyenSinh.Controls
             pnlThaoTac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHoSo).BeginInit();
             SuspendLayout();
+            // 
             // pnlLoc
+            // 
             pnlLoc.Controls.Add(lblDot);
             pnlLoc.Controls.Add(cboDot);
             pnlLoc.Controls.Add(lblKhoaHoc);
@@ -65,59 +67,89 @@ namespace QuanLyTuyenSinh.Controls
             pnlLoc.Controls.Add(txtTimKiem);
             pnlLoc.Dock = DockStyle.Top;
             pnlLoc.Location = new Point(0, 0);
+            pnlLoc.Margin = new Padding(6, 7, 6, 7);
             pnlLoc.Name = "pnlLoc";
-            pnlLoc.Size = new Size(1100, 50);
+            pnlLoc.Size = new Size(2200, 120);
             pnlLoc.TabIndex = 0;
+            // 
             // lblDot
+            // 
             lblDot.AutoSize = true;
-            lblDot.Location = new Point(15, 17);
+            lblDot.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
+            lblDot.Location = new Point(30, 41);
+            lblDot.Margin = new Padding(6, 0, 6, 0);
             lblDot.Name = "lblDot";
-            lblDot.Size = new Size(26, 15);
-            lblDot.Text = "Đợt";
+            lblDot.Size = new Size(198, 37);
+            lblDot.TabIndex = 0;
+            lblDot.Text = "Đợt tuyển sinh";
+            // 
             // cboDot
+            // 
             cboDot.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDot.FormattingEnabled = true;
-            cboDot.Location = new Point(50, 13);
+            cboDot.Location = new Point(240, 38);
+            cboDot.Margin = new Padding(6, 7, 6, 7);
             cboDot.Name = "cboDot";
-            cboDot.Size = new Size(170, 23);
+            cboDot.Size = new Size(336, 44);
             cboDot.TabIndex = 0;
             cboDot.SelectedIndexChanged += cboDot_SelectedIndexChanged;
+            // 
             // lblKhoaHoc
+            // 
             lblKhoaHoc.AutoSize = true;
-            lblKhoaHoc.Location = new Point(240, 17);
+            lblKhoaHoc.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
+            lblKhoaHoc.Location = new Point(596, 41);
+            lblKhoaHoc.Margin = new Padding(6, 0, 6, 0);
             lblKhoaHoc.Name = "lblKhoaHoc";
-            lblKhoaHoc.Size = new Size(54, 15);
+            lblKhoaHoc.Size = new Size(132, 37);
+            lblKhoaHoc.TabIndex = 1;
             lblKhoaHoc.Text = "Khóa học";
+            // 
             // cboKhoaHoc
+            // 
             cboKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cboKhoaHoc.FormattingEnabled = true;
-            cboKhoaHoc.Location = new Point(300, 13);
+            cboKhoaHoc.Location = new Point(740, 38);
+            cboKhoaHoc.Margin = new Padding(6, 7, 6, 7);
             cboKhoaHoc.Name = "cboKhoaHoc";
-            cboKhoaHoc.Size = new Size(190, 23);
+            cboKhoaHoc.Size = new Size(376, 44);
             cboKhoaHoc.TabIndex = 1;
             cboKhoaHoc.SelectedIndexChanged += cboLoc_SelectedIndexChanged;
+            // 
             // lblTrangThai
+            // 
             lblTrangThai.AutoSize = true;
-            lblTrangThai.Location = new Point(510, 17);
+            lblTrangThai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
+            lblTrangThai.Location = new Point(1136, 41);
+            lblTrangThai.Margin = new Padding(6, 0, 6, 0);
             lblTrangThai.Name = "lblTrangThai";
-            lblTrangThai.Size = new Size(57, 15);
+            lblTrangThai.Size = new Size(140, 37);
+            lblTrangThai.TabIndex = 2;
             lblTrangThai.Text = "Trạng thái";
+            // 
             // cboTrangThai
+            // 
             cboTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTrangThai.FormattingEnabled = true;
-            cboTrangThai.Location = new Point(575, 13);
+            cboTrangThai.Location = new Point(1290, 38);
+            cboTrangThai.Margin = new Padding(6, 7, 6, 7);
             cboTrangThai.Name = "cboTrangThai";
-            cboTrangThai.Size = new Size(120, 23);
+            cboTrangThai.Size = new Size(236, 44);
             cboTrangThai.TabIndex = 2;
             cboTrangThai.SelectedIndexChanged += cboLoc_SelectedIndexChanged;
+            // 
             // txtTimKiem
-            txtTimKiem.Location = new Point(715, 13);
+            // 
+            txtTimKiem.Location = new Point(1724, 38);
+            txtTimKiem.Margin = new Padding(6, 7, 6, 7);
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.PlaceholderText = "Tên, SĐT hoặc email...";
-            txtTimKiem.Size = new Size(210, 23);
+            txtTimKiem.Size = new Size(416, 42);
             txtTimKiem.TabIndex = 3;
             txtTimKiem.TextChanged += txtTimKiem_TextChanged;
+            // 
             // pnlThaoTac
+            // 
             pnlThaoTac.Controls.Add(btnChonTatCa);
             pnlThaoTac.Controls.Add(btnBoChon);
             pnlThaoTac.Controls.Add(btnDuyet);
@@ -126,73 +158,101 @@ namespace QuanLyTuyenSinh.Controls
             pnlThaoTac.Controls.Add(btnBoQua);
             pnlThaoTac.Controls.Add(btnThem);
             pnlThaoTac.Dock = DockStyle.Top;
-            pnlThaoTac.Location = new Point(0, 50);
+            pnlThaoTac.Location = new Point(0, 120);
+            pnlThaoTac.Margin = new Padding(6, 7, 6, 7);
             pnlThaoTac.Name = "pnlThaoTac";
-            pnlThaoTac.Size = new Size(1100, 50);
+            pnlThaoTac.Size = new Size(2200, 120);
             pnlThaoTac.TabIndex = 1;
+            // 
             // btnChonTatCa
-            btnChonTatCa.Location = new Point(10, 8);
+            // 
+            btnChonTatCa.Location = new Point(20, 19);
+            btnChonTatCa.Margin = new Padding(6, 7, 6, 7);
             btnChonTatCa.Name = "btnChonTatCa";
-            btnChonTatCa.Size = new Size(105, 32);
+            btnChonTatCa.Size = new Size(210, 77);
             btnChonTatCa.TabIndex = 0;
             btnChonTatCa.Text = "Chọn tất cả";
             btnChonTatCa.UseVisualStyleBackColor = true;
             btnChonTatCa.Click += btnChonTatCa_Click;
+            // 
             // btnBoChon
-            btnBoChon.Location = new Point(120, 8);
+            // 
+            btnBoChon.Location = new Point(240, 19);
+            btnBoChon.Margin = new Padding(6, 7, 6, 7);
             btnBoChon.Name = "btnBoChon";
-            btnBoChon.Size = new Size(85, 32);
+            btnBoChon.Size = new Size(170, 77);
             btnBoChon.TabIndex = 1;
             btnBoChon.Text = "Bỏ chọn";
             btnBoChon.UseVisualStyleBackColor = true;
             btnBoChon.Click += btnBoChon_Click;
+            // 
             // btnDuyet
-            btnDuyet.Location = new Point(215, 8);
+            // 
+            btnDuyet.Location = new Point(430, 19);
+            btnDuyet.Margin = new Padding(6, 7, 6, 7);
             btnDuyet.Name = "btnDuyet";
-            btnDuyet.Size = new Size(150, 32);
+            btnDuyet.Size = new Size(300, 77);
             btnDuyet.TabIndex = 2;
             btnDuyet.Text = "Đánh dấu Đã duyệt";
             btnDuyet.UseVisualStyleBackColor = true;
             btnDuyet.Click += btnDuyet_Click;
+            // 
             // btnHuyHS
-            btnHuyHS.Location = new Point(370, 8);
+            // 
+            btnHuyHS.Location = new Point(740, 19);
+            btnHuyHS.Margin = new Padding(6, 7, 6, 7);
             btnHuyHS.Name = "btnHuyHS";
-            btnHuyHS.Size = new Size(140, 32);
+            btnHuyHS.Size = new Size(280, 77);
             btnHuyHS.TabIndex = 3;
             btnHuyHS.Text = "Đánh dấu Đã hủy";
             btnHuyHS.UseVisualStyleBackColor = true;
             btnHuyHS.Click += btnHuyHS_Click;
+            // 
             // btnLuu
-            btnLuu.Location = new Point(530, 8);
+            // 
+            btnLuu.Location = new Point(1060, 19);
+            btnLuu.Margin = new Padding(6, 7, 6, 7);
             btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(80, 32);
+            btnLuu.Size = new Size(160, 77);
             btnLuu.TabIndex = 4;
             btnLuu.Text = "Lưu";
             btnLuu.UseVisualStyleBackColor = true;
             btnLuu.Click += btnLuu_Click;
+            // 
             // btnBoQua
-            btnBoQua.Location = new Point(615, 8);
+            // 
+            btnBoQua.Location = new Point(1230, 19);
+            btnBoQua.Margin = new Padding(6, 7, 6, 7);
             btnBoQua.Name = "btnBoQua";
-            btnBoQua.Size = new Size(90, 32);
+            btnBoQua.Size = new Size(180, 77);
             btnBoQua.TabIndex = 5;
             btnBoQua.Text = "Bỏ thay đổi";
             btnBoQua.UseVisualStyleBackColor = true;
             btnBoQua.Click += btnBoQua_Click;
+            // 
             // btnThem
-            btnThem.Location = new Point(780, 8);
+            // 
+            btnThem.Location = new Point(1560, 19);
+            btnThem.Margin = new Padding(6, 7, 6, 7);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(120, 32);
+            btnThem.Size = new Size(240, 77);
             btnThem.TabIndex = 6;
             btnThem.Text = "Thêm hồ sơ";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
+            // 
             // lblTomTat
+            // 
             lblTomTat.Dock = DockStyle.Bottom;
-            lblTomTat.Location = new Point(0, 572);
+            lblTomTat.Location = new Point(0, 1373);
+            lblTomTat.Margin = new Padding(6, 0, 6, 0);
             lblTomTat.Name = "lblTomTat";
-            lblTomTat.Size = new Size(1100, 28);
+            lblTomTat.Size = new Size(2200, 67);
+            lblTomTat.TabIndex = 3;
             lblTomTat.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // dgvHoSo
+            // 
             dgvHoSo.AllowUserToAddRows = false;
             dgvHoSo.AllowUserToDeleteRows = false;
             dgvHoSo.AllowUserToResizeRows = false;
@@ -202,107 +262,151 @@ namespace QuanLyTuyenSinh.Controls
             dgvHoSo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHoSo.Columns.AddRange(new DataGridViewColumn[] { colStt, colChon, colHoTen, colSoDienThoai, colEmail, colDot, colKhoaHoc, colNgayDangKy, colTrangThai, colNguoiXacNhan, colGhiChu, colSua, colXoa });
             dgvHoSo.Dock = DockStyle.Fill;
-            dgvHoSo.Location = new Point(0, 100);
+            dgvHoSo.Location = new Point(0, 240);
+            dgvHoSo.Margin = new Padding(6, 7, 6, 7);
             dgvHoSo.MultiSelect = false;
             dgvHoSo.Name = "dgvHoSo";
             dgvHoSo.RowHeadersVisible = false;
+            dgvHoSo.RowHeadersWidth = 82;
             dgvHoSo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHoSo.Size = new Size(1100, 472);
+            dgvHoSo.Size = new Size(2200, 1133);
             dgvHoSo.TabIndex = 2;
             dgvHoSo.CellBeginEdit += dgvHoSo_CellBeginEdit;
             dgvHoSo.CellContentClick += dgvHoSo_CellContentClick;
             dgvHoSo.CellDoubleClick += dgvHoSo_CellDoubleClick;
             dgvHoSo.CellFormatting += dgvHoSo_CellFormatting;
             dgvHoSo.CurrentCellDirtyStateChanged += dgvHoSo_CurrentCellDirtyStateChanged;
+            // 
             // colStt
-            styleGiua.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colStt.DefaultCellStyle = styleGiua;
+            // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            colStt.DefaultCellStyle = dataGridViewCellStyle1;
             colStt.FillWeight = 30F;
             colStt.HeaderText = "STT";
+            colStt.MinimumWidth = 10;
             colStt.Name = "colStt";
             colStt.ReadOnly = true;
+            // 
             // colChon
+            // 
             colChon.DataPropertyName = "Chon";
             colChon.FillWeight = 30F;
             colChon.HeaderText = "Chọn";
+            colChon.MinimumWidth = 10;
             colChon.Name = "colChon";
+            // 
             // colHoTen
+            // 
             colHoTen.DataPropertyName = "HoTen";
             colHoTen.FillWeight = 100F;
             colHoTen.HeaderText = "Họ Tên";
+            colHoTen.MinimumWidth = 10;
             colHoTen.Name = "colHoTen";
             colHoTen.ReadOnly = true;
+            // 
             // colSoDienThoai
+            // 
             colSoDienThoai.DataPropertyName = "SoDienThoai";
             colSoDienThoai.FillWeight = 75F;
             colSoDienThoai.HeaderText = "Số Điện Thoại";
+            colSoDienThoai.MinimumWidth = 10;
             colSoDienThoai.Name = "colSoDienThoai";
             colSoDienThoai.ReadOnly = true;
+            // 
             // colEmail
+            // 
             colEmail.DataPropertyName = "Email";
             colEmail.FillWeight = 115F;
             colEmail.HeaderText = "Email";
+            colEmail.MinimumWidth = 10;
             colEmail.Name = "colEmail";
             colEmail.ReadOnly = true;
+            // 
             // colDot
+            // 
             colDot.DataPropertyName = "TenDot";
             colDot.FillWeight = 80F;
             colDot.HeaderText = "Đợt";
+            colDot.MinimumWidth = 10;
             colDot.Name = "colDot";
             colDot.ReadOnly = true;
+            // 
             // colKhoaHoc
+            // 
             colKhoaHoc.DataPropertyName = "TenKhoaHoc";
             colKhoaHoc.FillWeight = 80F;
             colKhoaHoc.HeaderText = "Khóa Học";
+            colKhoaHoc.MinimumWidth = 10;
             colKhoaHoc.Name = "colKhoaHoc";
             colKhoaHoc.ReadOnly = true;
+            // 
             // colNgayDangKy
-            styleNgay.Format = "dd/MM/yyyy HH:mm";
+            // 
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm";
             colNgayDangKy.DataPropertyName = "NgayDangKy";
-            colNgayDangKy.DefaultCellStyle = styleNgay;
+            colNgayDangKy.DefaultCellStyle = dataGridViewCellStyle2;
             colNgayDangKy.FillWeight = 90F;
             colNgayDangKy.HeaderText = "Ngày Đăng Ký";
+            colNgayDangKy.MinimumWidth = 10;
             colNgayDangKy.Name = "colNgayDangKy";
             colNgayDangKy.ReadOnly = true;
+            // 
             // colTrangThai
+            // 
             colTrangThai.DataPropertyName = "TrangThaiHoSo";
             colTrangThai.FillWeight = 70F;
             colTrangThai.HeaderText = "Trạng Thái";
+            colTrangThai.MinimumWidth = 10;
             colTrangThai.Name = "colTrangThai";
             colTrangThai.ReadOnly = true;
+            // 
             // colNguoiXacNhan
+            // 
             colNguoiXacNhan.DataPropertyName = "TenNhanVienXacNhan";
             colNguoiXacNhan.FillWeight = 90F;
             colNguoiXacNhan.HeaderText = "Người Xác Nhận";
+            colNguoiXacNhan.MinimumWidth = 10;
             colNguoiXacNhan.Name = "colNguoiXacNhan";
             colNguoiXacNhan.ReadOnly = true;
+            // 
             // colGhiChu
+            // 
             colGhiChu.DataPropertyName = "GhiChu";
             colGhiChu.FillWeight = 100F;
             colGhiChu.HeaderText = "Ghi Chú";
+            colGhiChu.MinimumWidth = 10;
             colGhiChu.Name = "colGhiChu";
             colGhiChu.ReadOnly = true;
+            // 
             // colSua
+            // 
             colSua.FillWeight = 38F;
             colSua.HeaderText = "Thao Tác";
+            colSua.MinimumWidth = 10;
             colSua.Name = "colSua";
             colSua.Text = "Sửa";
             colSua.UseColumnTextForButtonValue = true;
+            // 
             // colXoa
+            // 
             colXoa.FillWeight = 38F;
             colXoa.HeaderText = "";
+            colXoa.MinimumWidth = 10;
             colXoa.Name = "colXoa";
             colXoa.Text = "Xóa";
             colXoa.UseColumnTextForButtonValue = true;
+            // 
             // ucHoSo
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            // 
+            AutoScaleDimensions = new SizeF(14F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(dgvHoSo);
             Controls.Add(lblTomTat);
             Controls.Add(pnlThaoTac);
             Controls.Add(pnlLoc);
+            Margin = new Padding(6, 7, 6, 7);
             Name = "ucHoSo";
-            Size = new Size(1100, 600);
+            Size = new Size(2200, 1440);
             Load += ucHoSo_Load;
             pnlLoc.ResumeLayout(false);
             pnlLoc.PerformLayout();

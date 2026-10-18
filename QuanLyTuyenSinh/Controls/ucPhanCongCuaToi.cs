@@ -28,6 +28,7 @@ public partial class ucPhanCongCuaToi : UserControl
     {
         InitializeComponent();
         LuoiHelper.DanhSoThuTu(dgvPhanCong, "colStt");
+        LuoiHelper.CauHinhChung(dgvPhanCong);
     }
 
     private void ucPhanCongCuaToi_Load(object? sender, EventArgs e)

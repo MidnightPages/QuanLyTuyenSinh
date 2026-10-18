@@ -22,6 +22,7 @@ public partial class ucThongKe : UserControl
     {
         InitializeComponent();
         LuoiHelper.DanhSoThuTu(dgvThongKe, "colStt");
+        LuoiHelper.CauHinhChung(dgvThongKe);
     }
 
     private void ucThongKe_Load(object? sender, EventArgs e)

@@ -15,6 +15,7 @@ public partial class ucDotTuyenSinh : UserControl
     {
         InitializeComponent();
         LuoiHelper.DanhSoThuTu(dgvDot, "colStt");
+        LuoiHelper.CauHinhChung(dgvDot);
 
         cboTrangThai.Items.Add("Tất cả");
         cboTrangThai.Items.AddRange(DanhMuc.TrangThaiDot);

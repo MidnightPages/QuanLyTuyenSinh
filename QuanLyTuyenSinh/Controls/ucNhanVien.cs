@@ -16,6 +16,7 @@ public partial class ucNhanVien : UserControl
     {
         InitializeComponent();
         LuoiHelper.DanhSoThuTu(dgvNhanVien, "colStt");
+        LuoiHelper.CauHinhChung(dgvNhanVien);
 
         cboTrangThai.Items.Add("Tất cả");
         cboTrangThai.Items.AddRange(DanhMuc.TrangThaiTaiKhoan);

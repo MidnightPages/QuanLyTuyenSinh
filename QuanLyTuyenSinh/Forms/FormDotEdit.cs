@@ -22,6 +22,7 @@ public partial class FormDotEdit : Form
     {
         InitializeComponent();
         LuoiHelper.DanhSoThuTu(dgvKhoaHoc, "colStt");
+        LuoiHelper.CauHinhChung(dgvKhoaHoc);
         _dot = dot;
         _chiXem = chiXem;
 

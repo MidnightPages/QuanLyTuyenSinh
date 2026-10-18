@@ -23,6 +23,7 @@ public partial class ucHoSo : UserControl
     {
         InitializeComponent();
         LuoiHelper.DanhSoThuTu(dgvHoSo, "colStt");
+        LuoiHelper.CauHinhChung(dgvHoSo);
 
         cboTrangThai.Items.Add("Tất cả");
         cboTrangThai.Items.AddRange(DanhMuc.TrangThaiHoSo);

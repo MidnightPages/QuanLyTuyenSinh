@@ -122,4 +122,5 @@ public partial class FormChonNhanVien : Form
             MessageBox.Show("Không lưu được: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
+
 }

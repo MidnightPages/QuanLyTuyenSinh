@@ -3,6 +3,7 @@ using QuanLyTuyenSinh.Forms;
 using QuanLyTuyenSinh.Helpers;
 using QuanLyTuyenSinh.Models;
 using QuanLyTuyenSinh.Services;
+using System.Diagnostics;
 
 namespace QuanLyTuyenSinh.Controls;
 
@@ -60,6 +61,46 @@ public partial class ucDotTuyenSinh : UserControl
         using var form = new FormDotEdit();
         form.ShowDialog(FindForm());
         if (form.CoThayDoi) TaiDuLieu();
+    }
+
+    // Link trang đăng ký hồ sơ trực tuyến (tạm thời). Khi website có link thật thì chỉ cần sửa dòng này.
+    private const string LinkDangKy = "http://localhost:3000";
+
+    private void btnTaoLink_Click(object? sender, EventArgs e)
+    {
+        // Sao chép link vào bộ nhớ tạm để dán gửi cho học viên
+        bool daSaoChep = true;
+        try { Clipboard.SetText(LinkDangKy); }
+        catch { daSaoChep = false; }   // bộ nhớ tạm đang bị chương trình khác giữ
+
+        string noiDung = "Link đăng ký hồ sơ trực tuyến:\n\n" + LinkDangKy + "\n\n"
+            + (daSaoChep ? "Link đã được sao chép, bạn chỉ cần dán để gửi cho học viên.\n"
+                         : "Chưa sao chép được tự động, hãy chép link ở trên.\n");
+
+        // Website chỉ nhận đăng ký ở đợt có trạng thái "Đang tuyển sinh"
+        if (dgvDot.CurrentRow?.DataBoundItem is DotTuyenSinh dot)
+        {
+            noiDung += $"\nĐợt đang chọn: {dot.TenDot} ({dot.TrangThai}).";
+            if (dot.TrangThai != "Đang tuyển sinh")
+                noiDung += "\nLưu ý: đợt này chưa ở trạng thái Đang tuyển sinh nên website chưa nhận đăng ký cho đợt này.";
+            noiDung += "\n";
+        }
+
+        noiDung += "\nBạn có muốn mở trang đăng ký này không?";
+
+        var traLoi = MessageBox.Show(noiDung, "Link đăng ký trực tuyến",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+        if (traLoi != DialogResult.Yes) return;
+
+        try
+        {
+            Process.Start(new ProcessStartInfo(LinkDangKy) { UseShellExecute = true });
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Không mở được trình duyệt: " + ex.Message, "Lỗi",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 
     // Bấm nút Sửa / Xóa ngay trên dòng

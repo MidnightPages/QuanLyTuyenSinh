@@ -76,7 +76,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             lblDot.AutoSize = true;
             lblDot.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
-            lblDot.Location = new Point(30, 41);
+            lblDot.Location = new Point(40, 41);
             lblDot.Margin = new Padding(6, 0, 6, 0);
             lblDot.Name = "lblDot";
             lblDot.Size = new Size(198, 37);
@@ -98,7 +98,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             lblKhoaHoc.AutoSize = true;
             lblKhoaHoc.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
-            lblKhoaHoc.Location = new Point(596, 41);
+            lblKhoaHoc.Location = new Point(605, 41);
             lblKhoaHoc.Margin = new Padding(6, 0, 6, 0);
             lblKhoaHoc.Name = "lblKhoaHoc";
             lblKhoaHoc.Size = new Size(132, 37);
@@ -120,7 +120,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             lblTrangThai.AutoSize = true;
             lblTrangThai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
-            lblTrangThai.Location = new Point(1136, 41);
+            lblTrangThai.Location = new Point(1146, 41);
             lblTrangThai.Margin = new Padding(6, 0, 6, 0);
             lblTrangThai.Name = "lblTrangThai";
             lblTrangThai.Size = new Size(140, 37);
@@ -166,7 +166,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             // btnChonTatCa
             // 
-            btnChonTatCa.Location = new Point(20, 19);
+            btnChonTatCa.Location = new Point(60, 19);
             btnChonTatCa.Margin = new Padding(6, 7, 6, 7);
             btnChonTatCa.Name = "btnChonTatCa";
             btnChonTatCa.Size = new Size(210, 77);
@@ -177,7 +177,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             // btnBoChon
             // 
-            btnBoChon.Location = new Point(240, 19);
+            btnBoChon.Location = new Point(280, 19);
             btnBoChon.Margin = new Padding(6, 7, 6, 7);
             btnBoChon.Name = "btnBoChon";
             btnBoChon.Size = new Size(170, 77);
@@ -188,29 +188,36 @@ namespace QuanLyTuyenSinh.Controls
             // 
             // btnDuyet
             // 
-            btnDuyet.Location = new Point(430, 19);
+            btnDuyet.Location = new Point(770, 30);
             btnDuyet.Margin = new Padding(6, 7, 6, 7);
             btnDuyet.Name = "btnDuyet";
-            btnDuyet.Size = new Size(300, 77);
+            btnDuyet.Size = new Size(200, 60);
+            btnDuyet.BackColor = ColorTranslator.FromHtml("#E5F0FE");
+            btnDuyet.ForeColor = Color.Black;
+            btnDuyet.FlatStyle = FlatStyle.Flat;  
             btnDuyet.TabIndex = 2;
-            btnDuyet.Text = "Đánh dấu Đã duyệt";
+            btnDuyet.Text = "Duyệt hồ sơ";
             btnDuyet.UseVisualStyleBackColor = true;
+
             btnDuyet.Click += btnDuyet_Click;
             // 
             // btnHuyHS
             // 
-            btnHuyHS.Location = new Point(740, 19);
+            btnHuyHS.Location = new Point(1000, 30);
             btnHuyHS.Margin = new Padding(6, 7, 6, 7);
             btnHuyHS.Name = "btnHuyHS";
-            btnHuyHS.Size = new Size(280, 77);
+            btnHuyHS.Size = new Size(200, 60);
+            btnHuyHS.BackColor = ColorTranslator.FromHtml("#E5F0FE");
+            btnHuyHS.ForeColor = Color.Black;
+            btnHuyHS.FlatStyle = FlatStyle.Flat;
             btnHuyHS.TabIndex = 3;
-            btnHuyHS.Text = "Đánh dấu Đã hủy";
+            btnHuyHS.Text = "Hủy hồ sơ";
             btnHuyHS.UseVisualStyleBackColor = true;
             btnHuyHS.Click += btnHuyHS_Click;
             // 
             // btnLuu
             // 
-            btnLuu.Location = new Point(1060, 19);
+            btnLuu.Location = new Point(1260, 19);
             btnLuu.Margin = new Padding(6, 7, 6, 7);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(160, 77);
@@ -221,7 +228,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             // btnBoQua
             // 
-            btnBoQua.Location = new Point(1230, 19);
+            btnBoQua.Location = new Point(1430, 19);
             btnBoQua.Margin = new Padding(6, 7, 6, 7);
             btnBoQua.Name = "btnBoQua";
             btnBoQua.Size = new Size(180, 77);
@@ -232,7 +239,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             // btnThem
             // 
-            btnThem.Location = new Point(1560, 19);
+            btnThem.Location = new Point(1900, 19);
             btnThem.Margin = new Padding(6, 7, 6, 7);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(240, 77);

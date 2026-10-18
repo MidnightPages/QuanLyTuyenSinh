@@ -46,6 +46,39 @@ namespace QuanLyTuyenSinh.Forms
             grpMatKhau.SuspendLayout();
             SuspendLayout();
             // 
+            // lblMkCu
+            // 
+            lblMkCu.AutoSize = true;
+            lblMkCu.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblMkCu.Location = new Point(30, 79);
+            lblMkCu.Margin = new Padding(6, 0, 6, 0);
+            lblMkCu.Name = "lblMkCu";
+            lblMkCu.Size = new Size(232, 37);
+            lblMkCu.TabIndex = 0;
+            lblMkCu.Text = "Mật khẩu hiện tại";
+            // 
+            // lblMkMoi
+            // 
+            lblMkMoi.AutoSize = true;
+            lblMkMoi.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblMkMoi.Location = new Point(30, 175);
+            lblMkMoi.Margin = new Padding(6, 0, 6, 0);
+            lblMkMoi.Name = "lblMkMoi";
+            lblMkMoi.Size = new Size(187, 37);
+            lblMkMoi.TabIndex = 1;
+            lblMkMoi.Text = "Mật khẩu mới";
+            // 
+            // lblNhapLai
+            // 
+            lblNhapLai.AutoSize = true;
+            lblNhapLai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblNhapLai.Location = new Point(30, 271);
+            lblNhapLai.Margin = new Padding(6, 0, 6, 0);
+            lblNhapLai.Name = "lblNhapLai";
+            lblNhapLai.Size = new Size(245, 37);
+            lblNhapLai.TabIndex = 2;
+            lblNhapLai.Text = "Nhập lại mật khẩu";
+            // 
             // lblTenDangNhap
             // 
             lblTenDangNhap.AutoSize = true;
@@ -185,6 +218,7 @@ namespace QuanLyTuyenSinh.Forms
             // 
             // grpMatKhau
             // 
+            grpMatKhau.BackColor = ColorTranslator.FromHtml("#DFE9F2");
             grpMatKhau.Controls.Add(lblMkCu);
             grpMatKhau.Controls.Add(txtMkCu);
             grpMatKhau.Controls.Add(lblMkMoi);
@@ -202,17 +236,6 @@ namespace QuanLyTuyenSinh.Forms
             grpMatKhau.TabStop = false;
             grpMatKhau.Text = "Đổi mật khẩu";
             // 
-            // lblMkCu
-            // 
-            lblMkCu.AutoSize = true;
-            lblMkCu.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
-            lblMkCu.Location = new Point(30, 79);
-            lblMkCu.Margin = new Padding(6, 0, 6, 0);
-            lblMkCu.Name = "lblMkCu";
-            lblMkCu.Size = new Size(232, 37);
-            lblMkCu.TabIndex = 0;
-            lblMkCu.Text = "Mật khẩu hiện tại";
-            // 
             // txtMkCu
             // 
             txtMkCu.Location = new Point(300, 72);
@@ -222,17 +245,6 @@ namespace QuanLyTuyenSinh.Forms
             txtMkCu.TabIndex = 0;
             txtMkCu.UseSystemPasswordChar = true;
             // 
-            // lblMkMoi
-            // 
-            lblMkMoi.AutoSize = true;
-            lblMkMoi.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
-            lblMkMoi.Location = new Point(30, 175);
-            lblMkMoi.Margin = new Padding(6, 0, 6, 0);
-            lblMkMoi.Name = "lblMkMoi";
-            lblMkMoi.Size = new Size(187, 37);
-            lblMkMoi.TabIndex = 1;
-            lblMkMoi.Text = "Mật khẩu mới";
-            // 
             // txtMkMoi
             // 
             txtMkMoi.Location = new Point(300, 168);
@@ -241,17 +253,6 @@ namespace QuanLyTuyenSinh.Forms
             txtMkMoi.Size = new Size(496, 43);
             txtMkMoi.TabIndex = 1;
             txtMkMoi.UseSystemPasswordChar = true;
-            // 
-            // lblNhapLai
-            // 
-            lblNhapLai.AutoSize = true;
-            lblNhapLai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
-            lblNhapLai.Location = new Point(30, 271);
-            lblNhapLai.Margin = new Padding(6, 0, 6, 0);
-            lblNhapLai.Name = "lblNhapLai";
-            lblNhapLai.Size = new Size(245, 37);
-            lblNhapLai.TabIndex = 2;
-            lblNhapLai.Text = "Nhập lại mật khẩu";
             // 
             // txtNhapLai
             // 

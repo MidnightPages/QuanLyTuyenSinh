@@ -50,12 +50,13 @@ namespace QuanLyTuyenSinh.Controls
             pnlLoc.TabIndex = 0;
             // lblTimKiem
             lblTimKiem.AutoSize = true;
+            lblTimKiem.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
             lblTimKiem.Location = new Point(15, 22);
             lblTimKiem.Name = "lblTimKiem";
             lblTimKiem.Size = new Size(58, 15);
             lblTimKiem.Text = "Tìm kiếm";
             // txtTimKiem
-            txtTimKiem.Location = new Point(85, 18);
+            txtTimKiem.Location = new Point(85, 22);
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.PlaceholderText = "Tên khóa học...";
             txtTimKiem.Size = new Size(200, 23);
@@ -63,6 +64,7 @@ namespace QuanLyTuyenSinh.Controls
             txtTimKiem.TextChanged += txtTimKiem_TextChanged;
             // lblTrangThai
             lblTrangThai.AutoSize = true;
+            lblTrangThai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
             lblTrangThai.Location = new Point(305, 22);
             lblTrangThai.Name = "lblTrangThai";
             lblTrangThai.Size = new Size(57, 15);
@@ -70,7 +72,7 @@ namespace QuanLyTuyenSinh.Controls
             // cboTrangThai
             cboTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTrangThai.FormattingEnabled = true;
-            cboTrangThai.Location = new Point(375, 18);
+            cboTrangThai.Location = new Point(377, 22);
             cboTrangThai.Name = "cboTrangThai";
             cboTrangThai.Size = new Size(140, 23);
             cboTrangThai.TabIndex = 3;

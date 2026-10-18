@@ -46,6 +46,7 @@ namespace QuanLyTuyenSinh.Controls
             pnlLoc.TabIndex = 0;
             // lblDot
             lblDot.AutoSize = true;
+            lblDot.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
             lblDot.Location = new Point(15, 17);
             lblDot.Name = "lblDot";
             lblDot.Size = new Size(79, 15);
@@ -53,7 +54,7 @@ namespace QuanLyTuyenSinh.Controls
             // cboDot
             cboDot.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDot.FormattingEnabled = true;
-            cboDot.Location = new Point(105, 13);
+            cboDot.Location = new Point(120, 17);
             cboDot.Name = "cboDot";
             cboDot.Size = new Size(280, 23);
             cboDot.TabIndex = 0;

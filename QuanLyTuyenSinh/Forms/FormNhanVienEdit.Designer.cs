@@ -40,151 +40,234 @@ namespace QuanLyTuyenSinh.Forms
             btnLuu = new Button();
             btnHuy = new Button();
             SuspendLayout();
+            // 
             // lblTenDangNhap
+            // 
             lblTenDangNhap.AutoSize = true;
-            lblTenDangNhap.Location = new Point(20, 25);
+            lblTenDangNhap.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblTenDangNhap.Location = new Point(40, 60);
+            lblTenDangNhap.Margin = new Padding(6, 0, 6, 0);
             lblTenDangNhap.Name = "lblTenDangNhap";
-            lblTenDangNhap.Size = new Size(83, 15);
+            lblTenDangNhap.Size = new Size(199, 37);
+            lblTenDangNhap.TabIndex = 23;
             lblTenDangNhap.Text = "Tên đăng nhập";
+            // 
             // txtTenDangNhap
-            txtTenDangNhap.Location = new Point(150, 22);
+            // 
+            txtTenDangNhap.Location = new Point(300, 58);
+            txtTenDangNhap.Margin = new Padding(6, 7, 6, 7);
             txtTenDangNhap.MaxLength = 50;
             txtTenDangNhap.Name = "txtTenDangNhap";
-            txtTenDangNhap.Size = new Size(260, 23);
+            txtTenDangNhap.Size = new Size(516, 42);
             txtTenDangNhap.TabIndex = 1;
+            // 
             // lblMatKhau
+            // 
             lblMatKhau.AutoSize = true;
-            lblMatKhau.Location = new Point(20, 70);
+            lblMatKhau.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblMatKhau.Location = new Point(40, 168);
+            lblMatKhau.Margin = new Padding(6, 0, 6, 0);
             lblMatKhau.Name = "lblMatKhau";
-            lblMatKhau.Size = new Size(55, 15);
+            lblMatKhau.Size = new Size(132, 37);
+            lblMatKhau.TabIndex = 22;
             lblMatKhau.Text = "Mật khẩu";
+            // 
             // txtMatKhau
-            txtMatKhau.Location = new Point(150, 67);
+            // 
+            txtMatKhau.Location = new Point(300, 166);
+            txtMatKhau.Margin = new Padding(6, 7, 6, 7);
             txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new Size(260, 23);
+            txtMatKhau.Size = new Size(516, 42);
             txtMatKhau.TabIndex = 2;
             txtMatKhau.UseSystemPasswordChar = true;
+            // 
             // lblNhapLai
+            // 
             lblNhapLai.AutoSize = true;
-            lblNhapLai.Location = new Point(20, 115);
+            lblNhapLai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblNhapLai.Location = new Point(40, 276);
+            lblNhapLai.Margin = new Padding(6, 0, 6, 0);
             lblNhapLai.Name = "lblNhapLai";
-            lblNhapLai.Size = new Size(98, 15);
+            lblNhapLai.Size = new Size(245, 37);
+            lblNhapLai.TabIndex = 21;
             lblNhapLai.Text = "Nhập lại mật khẩu";
+            // 
             // txtNhapLai
-            txtNhapLai.Location = new Point(150, 112);
+            // 
+            txtNhapLai.Location = new Point(300, 274);
+            txtNhapLai.Margin = new Padding(6, 7, 6, 7);
             txtNhapLai.Name = "txtNhapLai";
-            txtNhapLai.Size = new Size(260, 23);
+            txtNhapLai.Size = new Size(516, 42);
             txtNhapLai.TabIndex = 3;
             txtNhapLai.UseSystemPasswordChar = true;
-            // btnDatLaiMatKhau (chỉ hiện khi sửa nhân viên)
-            btnDatLaiMatKhau.Location = new Point(150, 85);
+            // 
+            // btnDatLaiMatKhau
+            // 
+            btnDatLaiMatKhau.Location = new Point(300, 204);
+            btnDatLaiMatKhau.Margin = new Padding(6, 7, 6, 7);
             btnDatLaiMatKhau.Name = "btnDatLaiMatKhau";
-            btnDatLaiMatKhau.Size = new Size(160, 34);
+            btnDatLaiMatKhau.Size = new Size(320, 82);
             btnDatLaiMatKhau.TabIndex = 20;
             btnDatLaiMatKhau.Text = "Đặt lại mật khẩu";
             btnDatLaiMatKhau.UseVisualStyleBackColor = true;
             btnDatLaiMatKhau.Visible = false;
             btnDatLaiMatKhau.Click += btnDatLaiMatKhau_Click;
+            // 
             // lblHoTen
+            // 
             lblHoTen.AutoSize = true;
-            lblHoTen.Location = new Point(20, 160);
+            lblHoTen.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblHoTen.Location = new Point(40, 384);
+            lblHoTen.Margin = new Padding(6, 0, 6, 0);
             lblHoTen.Name = "lblHoTen";
-            lblHoTen.Size = new Size(41, 15);
+            lblHoTen.Size = new Size(98, 37);
+            lblHoTen.TabIndex = 17;
             lblHoTen.Text = "Họ tên";
+            // 
             // txtHoTen
-            txtHoTen.Location = new Point(150, 157);
+            // 
+            txtHoTen.Location = new Point(300, 382);
+            txtHoTen.Margin = new Padding(6, 7, 6, 7);
             txtHoTen.MaxLength = 100;
             txtHoTen.Name = "txtHoTen";
-            txtHoTen.Size = new Size(260, 23);
+            txtHoTen.Size = new Size(516, 42);
             txtHoTen.TabIndex = 4;
+            // 
             // lblNgaySinh
+            // 
             lblNgaySinh.AutoSize = true;
-            lblNgaySinh.Location = new Point(20, 205);
+            lblNgaySinh.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblNgaySinh.Location = new Point(40, 492);
+            lblNgaySinh.Margin = new Padding(6, 0, 6, 0);
             lblNgaySinh.Name = "lblNgaySinh";
-            lblNgaySinh.Size = new Size(58, 15);
+            lblNgaySinh.Size = new Size(140, 37);
+            lblNgaySinh.TabIndex = 16;
             lblNgaySinh.Text = "Ngày sinh";
+            // 
             // dtpNgaySinh
+            // 
+            dtpNgaySinh.Checked = false;
             dtpNgaySinh.CustomFormat = "dd/MM/yyyy";
             dtpNgaySinh.Format = DateTimePickerFormat.Custom;
-            dtpNgaySinh.Location = new Point(150, 202);
+            dtpNgaySinh.Location = new Point(300, 490);
+            dtpNgaySinh.Margin = new Padding(6, 7, 6, 7);
             dtpNgaySinh.Name = "dtpNgaySinh";
             dtpNgaySinh.ShowCheckBox = true;
-            dtpNgaySinh.Size = new Size(160, 23);
+            dtpNgaySinh.Size = new Size(316, 42);
             dtpNgaySinh.TabIndex = 5;
-            dtpNgaySinh.Checked = false;
+            // 
             // lblGioiTinh
+            // 
             lblGioiTinh.AutoSize = true;
-            lblGioiTinh.Location = new Point(20, 250);
+            lblGioiTinh.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblGioiTinh.Location = new Point(40, 600);
+            lblGioiTinh.Margin = new Padding(6, 0, 6, 0);
             lblGioiTinh.Name = "lblGioiTinh";
-            lblGioiTinh.Size = new Size(52, 15);
+            lblGioiTinh.Size = new Size(124, 37);
+            lblGioiTinh.TabIndex = 15;
             lblGioiTinh.Text = "Giới tính";
+            // 
             // cboGioiTinh
+            // 
             cboGioiTinh.DropDownStyle = ComboBoxStyle.DropDownList;
             cboGioiTinh.FormattingEnabled = true;
-            cboGioiTinh.Location = new Point(150, 247);
+            cboGioiTinh.Location = new Point(300, 598);
+            cboGioiTinh.Margin = new Padding(6, 7, 6, 7);
             cboGioiTinh.Name = "cboGioiTinh";
-            cboGioiTinh.Size = new Size(120, 23);
+            cboGioiTinh.Size = new Size(236, 44);
             cboGioiTinh.TabIndex = 6;
+            // 
             // lblSoDienThoai
+            // 
             lblSoDienThoai.AutoSize = true;
-            lblSoDienThoai.Location = new Point(20, 295);
+            lblSoDienThoai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblSoDienThoai.Location = new Point(40, 708);
+            lblSoDienThoai.Margin = new Padding(6, 0, 6, 0);
             lblSoDienThoai.Name = "lblSoDienThoai";
-            lblSoDienThoai.Size = new Size(77, 15);
+            lblSoDienThoai.Size = new Size(176, 37);
+            lblSoDienThoai.TabIndex = 14;
             lblSoDienThoai.Text = "Số điện thoại";
+            // 
             // txtSoDienThoai
-            txtSoDienThoai.Location = new Point(150, 292);
+            // 
+            txtSoDienThoai.Location = new Point(300, 706);
+            txtSoDienThoai.Margin = new Padding(6, 7, 6, 7);
             txtSoDienThoai.MaxLength = 15;
             txtSoDienThoai.Name = "txtSoDienThoai";
-            txtSoDienThoai.Size = new Size(160, 23);
+            txtSoDienThoai.Size = new Size(316, 42);
             txtSoDienThoai.TabIndex = 7;
+            // 
             // lblVaiTro
+            // 
             lblVaiTro.AutoSize = true;
-            lblVaiTro.Location = new Point(20, 340);
+            lblVaiTro.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblVaiTro.Location = new Point(40, 816);
+            lblVaiTro.Margin = new Padding(6, 0, 6, 0);
             lblVaiTro.Name = "lblVaiTro";
-            lblVaiTro.Size = new Size(39, 15);
+            lblVaiTro.Size = new Size(98, 37);
+            lblVaiTro.TabIndex = 13;
             lblVaiTro.Text = "Vai trò";
+            // 
             // cboVaiTro
+            // 
             cboVaiTro.DropDownStyle = ComboBoxStyle.DropDownList;
             cboVaiTro.FormattingEnabled = true;
-            cboVaiTro.Location = new Point(150, 337);
+            cboVaiTro.Location = new Point(300, 814);
+            cboVaiTro.Margin = new Padding(6, 7, 6, 7);
             cboVaiTro.Name = "cboVaiTro";
-            cboVaiTro.Size = new Size(200, 23);
+            cboVaiTro.Size = new Size(396, 44);
             cboVaiTro.TabIndex = 8;
+            // 
             // lblTrangThai
+            // 
             lblTrangThai.AutoSize = true;
-            lblTrangThai.Location = new Point(20, 385);
+            lblTrangThai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
+            lblTrangThai.Location = new Point(40, 924);
+            lblTrangThai.Margin = new Padding(6, 0, 6, 0);
             lblTrangThai.Name = "lblTrangThai";
-            lblTrangThai.Size = new Size(57, 15);
+            lblTrangThai.Size = new Size(143, 37);
+            lblTrangThai.TabIndex = 12;
             lblTrangThai.Text = "Trạng thái";
+            // 
             // cboTrangThai
+            // 
             cboTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTrangThai.FormattingEnabled = true;
-            cboTrangThai.Location = new Point(150, 382);
+            cboTrangThai.Location = new Point(300, 922);
+            cboTrangThai.Margin = new Padding(6, 7, 6, 7);
             cboTrangThai.Name = "cboTrangThai";
-            cboTrangThai.Size = new Size(200, 23);
+            cboTrangThai.Size = new Size(396, 44);
             cboTrangThai.TabIndex = 9;
+            // 
             // btnLuu
-            btnLuu.Location = new Point(215, 440);
+            // 
+            btnLuu.Location = new Point(430, 1056);
+            btnLuu.Margin = new Padding(6, 7, 6, 7);
             btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(95, 34);
+            btnLuu.Size = new Size(190, 82);
             btnLuu.TabIndex = 10;
             btnLuu.Text = "Lưu";
             btnLuu.UseVisualStyleBackColor = true;
             btnLuu.Click += btnLuu_Click;
+            // 
             // btnHuy
+            // 
             btnHuy.DialogResult = DialogResult.Cancel;
-            btnHuy.Location = new Point(315, 440);
+            btnHuy.Location = new Point(630, 1056);
+            btnHuy.Margin = new Padding(6, 7, 6, 7);
             btnHuy.Name = "btnHuy";
-            btnHuy.Size = new Size(95, 34);
+            btnHuy.Size = new Size(190, 82);
             btnHuy.TabIndex = 11;
             btnHuy.Text = "Hủy";
             btnHuy.UseVisualStyleBackColor = true;
+            // 
             // FormNhanVienEdit
+            // 
             AcceptButton = btnLuu;
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(14F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnHuy;
-            ClientSize = new Size(440, 495);
+            ClientSize = new Size(880, 1188);
             Controls.Add(btnHuy);
             Controls.Add(btnLuu);
             Controls.Add(cboTrangThai);
@@ -207,6 +290,7 @@ namespace QuanLyTuyenSinh.Forms
             Controls.Add(txtTenDangNhap);
             Controls.Add(lblTenDangNhap);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(6, 7, 6, 7);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormNhanVienEdit";

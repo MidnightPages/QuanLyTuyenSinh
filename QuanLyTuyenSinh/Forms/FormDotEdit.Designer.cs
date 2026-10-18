@@ -78,11 +78,12 @@ namespace QuanLyTuyenSinh.Forms
             // lblTenDot
             lblTenDot.AutoSize = true;
             lblTenDot.Location = new Point(20, 28);
+            lblTenDot.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
             lblTenDot.Name = "lblTenDot";
             lblTenDot.Size = new Size(45, 15);
             lblTenDot.Text = "Tên đợt";
             // txtTenDot
-            txtTenDot.Location = new Point(130, 25);
+            txtTenDot.Location = new Point(130, 28);
             txtTenDot.MaxLength = 150;
             txtTenDot.Name = "txtTenDot";
             txtTenDot.Size = new Size(580, 23);
@@ -90,50 +91,54 @@ namespace QuanLyTuyenSinh.Forms
             // lblBatDau
             lblBatDau.AutoSize = true;
             lblBatDau.Location = new Point(20, 73);
+            lblBatDau.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
             lblBatDau.Name = "lblBatDau";
             lblBatDau.Size = new Size(77, 15);
             lblBatDau.Text = "Ngày bắt đầu";
             // dtpBatDau
             dtpBatDau.CustomFormat = "dd/MM/yyyy";
             dtpBatDau.Format = DateTimePickerFormat.Custom;
-            dtpBatDau.Location = new Point(130, 69);
+            dtpBatDau.Location = new Point(130, 73);
             dtpBatDau.Name = "dtpBatDau";
             dtpBatDau.Size = new Size(150, 23);
             dtpBatDau.TabIndex = 3;
             // lblKetThuc
             lblKetThuc.AutoSize = true;
             lblKetThuc.Location = new Point(330, 73);
+            lblKetThuc.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
             lblKetThuc.Name = "lblKetThuc";
             lblKetThuc.Size = new Size(79, 15);
             lblKetThuc.Text = "Ngày kết thúc";
             // dtpKetThuc
             dtpKetThuc.CustomFormat = "dd/MM/yyyy";
             dtpKetThuc.Format = DateTimePickerFormat.Custom;
-            dtpKetThuc.Location = new Point(420, 69);
+            dtpKetThuc.Location = new Point(435, 73);
             dtpKetThuc.Name = "dtpKetThuc";
             dtpKetThuc.Size = new Size(150, 23);
             dtpKetThuc.TabIndex = 5;
             // lblTrangThai
             lblTrangThai.AutoSize = true;
             lblTrangThai.Location = new Point(20, 118);
+            lblTrangThai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
             lblTrangThai.Name = "lblTrangThai";
             lblTrangThai.Size = new Size(57, 15);
             lblTrangThai.Text = "Trạng thái";
             // cboTrangThai
             cboTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTrangThai.FormattingEnabled = true;
-            cboTrangThai.Location = new Point(130, 114);
+            cboTrangThai.Location = new Point(130, 118);
             cboTrangThai.Name = "cboTrangThai";
             cboTrangThai.Size = new Size(200, 23);
             cboTrangThai.TabIndex = 7;
             // lblMoTa
             lblMoTa.AutoSize = true;
             lblMoTa.Location = new Point(20, 163);
+            lblMoTa.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold | FontStyle.Italic);
             lblMoTa.Name = "lblMoTa";
             lblMoTa.Size = new Size(36, 15);
             lblMoTa.Text = "Mô tả";
             // txtMoTa
-            txtMoTa.Location = new Point(130, 160);
+            txtMoTa.Location = new Point(130, 163);
             txtMoTa.MaxLength = 500;
             txtMoTa.Multiline = true;
             txtMoTa.Name = "txtMoTa";
@@ -145,7 +150,7 @@ namespace QuanLyTuyenSinh.Forms
             tabKhoaHoc.Controls.Add(lblHuongDan);
             tabKhoaHoc.Location = new Point(4, 24);
             tabKhoaHoc.Name = "tabKhoaHoc";
-            tabKhoaHoc.Padding = new Padding(3);
+            tabKhoaHoc.Padding = new Padding(5);
             tabKhoaHoc.Size = new Size(752, 437);
             tabKhoaHoc.TabIndex = 1;
             tabKhoaHoc.Text = "Khóa Học Trong Đợt";
@@ -157,7 +162,7 @@ namespace QuanLyTuyenSinh.Forms
             lblHuongDan.Name = "lblHuongDan";
             lblHuongDan.Padding = new Padding(5, 5, 0, 0);
             lblHuongDan.Size = new Size(746, 50);
-            lblHuongDan.Text = "Tích chọn các khóa học được mở trong đợt này và nhập chỉ tiêu (số học viên cần tuyển) cho từng khóa. Khóa học đã có hồ sơ hoặc phân công thì không bỏ tích được. Chỉ tiêu bằng 0 nghĩa là chưa đặt chỉ tiêu.";
+            lblHuongDan.Text = "Tích chọn các khóa học được mở trong đợt này và nhập chỉ tiêu tuyển sinh cho từng khóa. Khóa học đã có hồ sơ hoặc phân công thì không bỏ tích được. Chỉ tiêu bằng 0 nghĩa là chưa đặt chỉ tiêu.";
             // dgvKhoaHoc
             dgvKhoaHoc.AllowUserToAddRows = false;
             dgvKhoaHoc.AllowUserToDeleteRows = false;

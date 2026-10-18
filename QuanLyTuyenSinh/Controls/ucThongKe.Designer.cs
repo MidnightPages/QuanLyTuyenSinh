@@ -61,34 +61,36 @@ namespace QuanLyTuyenSinh.Controls
             pnlLoc.TabIndex = 0;
             // lblDot
             lblDot.AutoSize = true;
+            lblDot.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblDot.Location = new Point(15, 17);
             lblDot.Name = "lblDot";
             lblDot.Size = new Size(26, 15);
-            lblDot.Text = "Đợt";
+            lblDot.Text = "Đợt tuyển sinh";
             // cboDot
             cboDot.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDot.FormattingEnabled = true;
-            cboDot.Location = new Point(50, 13);
+            cboDot.Location = new Point(118, 16);
             cboDot.Name = "cboDot";
             cboDot.Size = new Size(210, 23);
             cboDot.TabIndex = 0;
             cboDot.SelectedIndexChanged += cboDot_SelectedIndexChanged;
             // lblKhoaHoc
             lblKhoaHoc.AutoSize = true;
-            lblKhoaHoc.Location = new Point(280, 17);
+            lblKhoaHoc.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblKhoaHoc.Location = new Point(370, 17);
             lblKhoaHoc.Name = "lblKhoaHoc";
             lblKhoaHoc.Size = new Size(54, 15);
             lblKhoaHoc.Text = "Khóa học";
             // cboKhoaHoc
             cboKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cboKhoaHoc.FormattingEnabled = true;
-            cboKhoaHoc.Location = new Point(340, 13);
+            cboKhoaHoc.Location = new Point(440, 16);
             cboKhoaHoc.Name = "cboKhoaHoc";
             cboKhoaHoc.Size = new Size(200, 23);
             cboKhoaHoc.TabIndex = 1;
             cboKhoaHoc.SelectedIndexChanged += cboKhoaHoc_SelectedIndexChanged;
             // btnLamMoi
-            btnLamMoi.Location = new Point(560, 9);
+            btnLamMoi.Location = new Point(740, 9);
             btnLamMoi.Name = "btnLamMoi";
             btnLamMoi.Size = new Size(100, 32);
             btnLamMoi.TabIndex = 2;
@@ -96,7 +98,7 @@ namespace QuanLyTuyenSinh.Controls
             btnLamMoi.UseVisualStyleBackColor = true;
             btnLamMoi.Click += btnLamMoi_Click;
             // btnXuatCsv
-            btnXuatCsv.Location = new Point(670, 9);
+            btnXuatCsv.Location = new Point(850, 9);
             btnXuatCsv.Name = "btnXuatCsv";
             btnXuatCsv.Size = new Size(120, 32);
             btnXuatCsv.TabIndex = 3;

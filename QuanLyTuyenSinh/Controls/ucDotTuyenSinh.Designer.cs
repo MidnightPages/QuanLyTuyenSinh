@@ -26,6 +26,7 @@ namespace QuanLyTuyenSinh.Controls
             lblTrangThai = new Label();
             cboTrangThai = new ComboBox();
             btnThem = new Button();
+            btnTaoLink = new Button();
             dgvDot = new DataGridView();
             colStt = new DataGridViewTextBoxColumn();
             colTenDot = new DataGridViewTextBoxColumn();
@@ -45,6 +46,7 @@ namespace QuanLyTuyenSinh.Controls
             pnlLoc.Controls.Add(lblTrangThai);
             pnlLoc.Controls.Add(cboTrangThai);
             pnlLoc.Controls.Add(btnThem);
+            pnlLoc.Controls.Add(btnTaoLink);
             pnlLoc.Dock = DockStyle.Top;
             pnlLoc.Location = new Point(0, 0);
             pnlLoc.Name = "pnlLoc";
@@ -52,12 +54,13 @@ namespace QuanLyTuyenSinh.Controls
             pnlLoc.TabIndex = 0;
             // lblTimKiem
             lblTimKiem.AutoSize = true;
+            lblTimKiem.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
             lblTimKiem.Location = new Point(15, 22);
             lblTimKiem.Name = "lblTimKiem";
             lblTimKiem.Size = new Size(58, 15);
             lblTimKiem.Text = "Tìm kiếm";
             // txtTimKiem
-            txtTimKiem.Location = new Point(85, 18);
+            txtTimKiem.Location = new Point(82, 22);
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.PlaceholderText = "Tên đợt tuyển sinh...";
             txtTimKiem.Size = new Size(200, 23);
@@ -65,6 +68,7 @@ namespace QuanLyTuyenSinh.Controls
             txtTimKiem.TextChanged += txtTimKiem_TextChanged;
             // lblTrangThai
             lblTrangThai.AutoSize = true;
+            lblTrangThai.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold);
             lblTrangThai.Location = new Point(305, 22);
             lblTrangThai.Name = "lblTrangThai";
             lblTrangThai.Size = new Size(57, 15);
@@ -72,19 +76,30 @@ namespace QuanLyTuyenSinh.Controls
             // cboTrangThai
             cboTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTrangThai.FormattingEnabled = true;
-            cboTrangThai.Location = new Point(375, 18);
+            cboTrangThai.Location = new Point(377, 22);
             cboTrangThai.Name = "cboTrangThai";
             cboTrangThai.Size = new Size(140, 23);
             cboTrangThai.TabIndex = 3;
             cboTrangThai.SelectedIndexChanged += cboTrangThai_SelectedIndexChanged;
             // btnThem
-            btnThem.Location = new Point(545, 14);
+            btnThem.Location = new Point(560, 14);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(90, 32);
             btnThem.TabIndex = 4;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
+            // btnTaoLink
+            btnTaoLink.Location = new Point(660, 14);
+            btnTaoLink.Name = "btnTaoLink";
+            btnTaoLink.Size = new Size(150, 32);
+            btnTaoLink.TabIndex = 5;
+            btnTaoLink.Text = "Tạo link đăng ký";
+            btnTaoLink.UseVisualStyleBackColor = true;
+            btnTaoLink.Click += btnTaoLink_Click;
+            btnTaoLink.BackColor = ColorTranslator.FromHtml("#E5F0FE");
+            btnTaoLink.ForeColor = Color.Black;
+            btnTaoLink.FlatStyle = FlatStyle.Flat;
             // dgvDot
             dgvDot.AllowUserToAddRows = false;
             dgvDot.AllowUserToDeleteRows = false;
@@ -187,6 +202,7 @@ namespace QuanLyTuyenSinh.Controls
         private Label lblTrangThai;
         private ComboBox cboTrangThai;
         private Button btnThem;
+        private Button btnTaoLink;
         private DataGridView dgvDot;
         private DataGridViewTextBoxColumn colStt;
         private DataGridViewTextBoxColumn colTenDot;

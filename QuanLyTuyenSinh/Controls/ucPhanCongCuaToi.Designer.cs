@@ -47,28 +47,30 @@ namespace QuanLyTuyenSinh.Controls
             pnlLoc.TabIndex = 0;
             // lblDot
             lblDot.AutoSize = true;
+            lblDot.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblDot.Location = new Point(15, 17);
             lblDot.Name = "lblDot";
             lblDot.Size = new Size(26, 15);
-            lblDot.Text = "Đợt";
+            lblDot.Text = "Đợt tuyển sinh";
             // cboDot
             cboDot.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDot.FormattingEnabled = true;
-            cboDot.Location = new Point(50, 13);
+            cboDot.Location = new Point(115, 17);
             cboDot.Name = "cboDot";
             cboDot.Size = new Size(230, 23);
             cboDot.TabIndex = 0;
             cboDot.SelectedIndexChanged += cboDot_SelectedIndexChanged;
             // lblKhoaHoc
             lblKhoaHoc.AutoSize = true;
-            lblKhoaHoc.Location = new Point(300, 17);
+            lblKhoaHoc.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblKhoaHoc.Location = new Point(380, 17);
             lblKhoaHoc.Name = "lblKhoaHoc";
             lblKhoaHoc.Size = new Size(54, 15);
             lblKhoaHoc.Text = "Khóa học";
             // cboKhoaHoc
             cboKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cboKhoaHoc.FormattingEnabled = true;
-            cboKhoaHoc.Location = new Point(360, 13);
+            cboKhoaHoc.Location = new Point(450, 17);
             cboKhoaHoc.Name = "cboKhoaHoc";
             cboKhoaHoc.Size = new Size(230, 23);
             cboKhoaHoc.TabIndex = 1;

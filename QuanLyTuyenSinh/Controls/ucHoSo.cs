@@ -3,8 +3,12 @@ using QuanLyTuyenSinh.Forms;
 using QuanLyTuyenSinh.Helpers;
 using QuanLyTuyenSinh.Models;
 using QuanLyTuyenSinh.Services;
+using System.Diagnostics;
+using System.Globalization;
+using ClosedXML.Excel;
 
 namespace QuanLyTuyenSinh.Controls;
+
 
 /// <summary>
 /// Nhân viên: xem hồ sơ thuộc phạm vi phụ trách, duyệt hàng loạt rồi bấm Lưu, thêm/sửa/xóa hồ sơ.
@@ -30,6 +34,8 @@ public partial class ucHoSo : UserControl
         cboTrangThai.SelectedIndex = 0;
 
         dgvHoSo.DataSource = _bs;
+        new ToolTip().SetToolTip(btnXuatDanhSach,
+        "Xuất danh sách học viên đã được duyệt theo đợt và khóa học đang chọn");
     }
 
     // Quản trị viên chỉ xem: ẩn cột Chọn, cột Sửa, Xóa và các nút xử lý
@@ -309,6 +315,128 @@ public partial class ucHoSo : UserControl
         catch (Exception ex)
         {
             MessageBox.Show("Không xóa được: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+
+    // ----- xuất danh sách học viên đã được duyệt -----
+    // Lấy "tên" (từ cuối của họ tên) để sắp xếp danh sách theo kiểu danh sách lớp
+    private static string TenGoi(string hoTen) =>
+        hoTen.Split(' ', StringSplitOptions.RemoveEmptyEntries).LastOrDefault() ?? "";
+
+    private void btnXuatDanhSach_Click(object? sender, EventArgs e)
+    {
+        if (CoThayDoiChuaLuu()) { NhacLuuTruoc(); return; }
+
+        int? maDot = cboDot.SelectedValue as int?;
+        int? maKhoaHoc = cboKhoaHoc.SelectedValue as int?;
+
+        List<HoSoItem> dsDuyet;
+        try
+        {
+            // Luôn lấy hồ sơ "Đã duyệt" theo đợt và khóa học đang chọn (bỏ qua ô trạng thái và ô tìm kiếm)
+            dsDuyet = HoSoRepo.LayDanhSach(maDot, maKhoaHoc, "Đã duyệt", "", _maNhanVien);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Không lấy được danh sách: " + ex.Message, "Lỗi",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        if (dsDuyet.Count == 0)
+        {
+            MessageBox.Show("Không có hồ sơ nào ở trạng thái Đã duyệt trong đợt và khóa học đang chọn.",
+                "Không có dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+
+        // Sắp xếp theo tên rồi họ tên, theo thứ tự chữ cái tiếng Việt
+        var vi = StringComparer.Create(new CultureInfo("vi-VN"), true);
+        dsDuyet = dsDuyet.OrderBy(h => TenGoi(h.HoTen), vi).ThenBy(h => h.HoTen, vi).ToList();
+
+        using var hopThoai = new SaveFileDialog
+        {
+            Filter = "Tệp Excel (*.xlsx)|*.xlsx",
+            FileName = $"danhsach_da_duyet_{DateTime.Now:yyyyMMdd_HHmm}.xlsx"
+        };
+        if (hopThoai.ShowDialog(FindForm()) != DialogResult.OK) return;
+
+        try
+        {
+            const int soCot = 11;
+            using var wb = new XLWorkbook();
+            var ws = wb.Worksheets.Add("Danh sách đã duyệt");
+
+            // Tiêu đề và thông tin chung
+            ws.Cell(1, 1).Value = "DANH SÁCH HỌC VIÊN ĐÃ ĐƯỢC DUYỆT";
+            var tieuDe = ws.Range(1, 1, 1, soCot);
+            tieuDe.Merge();
+            tieuDe.Style.Font.Bold = true;
+            tieuDe.Style.Font.FontSize = 14;
+            tieuDe.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+            ws.Cell(2, 1).Value = $"Đợt tuyển sinh: {cboDot.Text}";
+            ws.Cell(3, 1).Value = $"Khóa học: {cboKhoaHoc.Text}";
+            ws.Cell(4, 1).Value = $"Tổng số học viên: {dsDuyet.Count}    |    Ngày xuất: {DateTime.Now:dd/MM/yyyy HH:mm}";
+
+            // Dòng tiêu đề của bảng
+            string[] tenCot = { "STT", "Họ Tên", "Ngày Sinh", "Số Điện Thoại", "Email", "Địa Chỉ",
+                                "Đợt Tuyển Sinh", "Khóa Học", "Ngày Đăng Ký", "Ngày Duyệt", "Người Duyệt" };
+            for (int i = 0; i < tenCot.Length; i++)
+                ws.Cell(6, i + 1).Value = tenCot[i];
+
+            // Dữ liệu
+            int dong = 7;
+            int stt = 1;
+            foreach (var h in dsDuyet)
+            {
+                ws.Cell(dong, 1).Value = stt++;
+                ws.Cell(dong, 2).Value = h.HoTen;
+                if (h.NgaySinh.HasValue) ws.Cell(dong, 3).Value = h.NgaySinh.Value;
+                ws.Cell(dong, 4).Value = h.SoDienThoai;     // lưu dạng chữ để giữ số 0 ở đầu
+                ws.Cell(dong, 5).Value = h.Email;
+                ws.Cell(dong, 6).Value = h.DiaChi ?? "";
+                ws.Cell(dong, 7).Value = h.TenDot;
+                ws.Cell(dong, 8).Value = h.TenKhoaHoc;
+                ws.Cell(dong, 9).Value = h.NgayDangKy;
+                if (h.NgayXacNhan.HasValue) ws.Cell(dong, 10).Value = h.NgayXacNhan.Value;
+                ws.Cell(dong, 11).Value = h.TenNhanVienXacNhan ?? "";
+                dong++;
+            }
+            int dongCuoi = dong - 1;
+
+            // Định dạng
+            ws.Range(7, 3, dongCuoi, 3).Style.DateFormat.Format = "dd/MM/yyyy";
+            ws.Range(7, 9, dongCuoi, 10).Style.DateFormat.Format = "dd/MM/yyyy HH:mm";
+
+            var dongTieuDe = ws.Range(6, 1, 6, soCot);
+            dongTieuDe.Style.Font.Bold = true;
+            dongTieuDe.Style.Fill.BackgroundColor = XLColor.LightSteelBlue;
+            dongTieuDe.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+            var bang = ws.Range(6, 1, dongCuoi, soCot);
+            bang.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+            bang.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+            ws.Range(7, 1, dongCuoi, 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            ws.Range(7, 3, dongCuoi, 3).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+            ws.Columns(1, soCot).AdjustToContents(6, dongCuoi);
+
+            wb.SaveAs(hopThoai.FileName);
+
+            var mo = MessageBox.Show($"Đã xuất {dsDuyet.Count} học viên. Bạn có muốn mở file không?", "Thành công",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (mo == DialogResult.Yes)
+                Process.Start(new ProcessStartInfo(hopThoai.FileName) { UseShellExecute = true });
+        }
+        catch (IOException)
+        {
+            MessageBox.Show("Không ghi được file. Nếu file đang mở trong Excel, hãy đóng lại rồi thử lần nữa.",
+                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Không xuất được file: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

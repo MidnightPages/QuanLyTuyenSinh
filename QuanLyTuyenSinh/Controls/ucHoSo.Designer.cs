@@ -36,6 +36,7 @@ namespace QuanLyTuyenSinh.Controls
             btnLuu = new Button();
             btnBoQua = new Button();
             btnThem = new Button();
+            btnXuatDanhSach = new Button();
             lblTomTat = new Label();
             dgvHoSo = new DataGridView();
             colStt = new DataGridViewTextBoxColumn();
@@ -157,6 +158,7 @@ namespace QuanLyTuyenSinh.Controls
             pnlThaoTac.Controls.Add(btnLuu);
             pnlThaoTac.Controls.Add(btnBoQua);
             pnlThaoTac.Controls.Add(btnThem);
+            pnlThaoTac.Controls.Add(btnXuatDanhSach);
             pnlThaoTac.Dock = DockStyle.Top;
             pnlThaoTac.Location = new Point(0, 120);
             pnlThaoTac.Margin = new Padding(6, 7, 6, 7);
@@ -188,7 +190,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             // btnDuyet
             // 
-            btnDuyet.Location = new Point(770, 30);
+            btnDuyet.Location = new Point(730, 30);
             btnDuyet.Margin = new Padding(6, 7, 6, 7);
             btnDuyet.Name = "btnDuyet";
             btnDuyet.Size = new Size(200, 60);
@@ -203,7 +205,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             // btnHuyHS
             // 
-            btnHuyHS.Location = new Point(1000, 30);
+            btnHuyHS.Location = new Point(950, 30);
             btnHuyHS.Margin = new Padding(6, 7, 6, 7);
             btnHuyHS.Name = "btnHuyHS";
             btnHuyHS.Size = new Size(200, 60);
@@ -217,7 +219,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             // btnLuu
             // 
-            btnLuu.Location = new Point(1260, 19);
+            btnLuu.Location = new Point(1190, 19);
             btnLuu.Margin = new Padding(6, 7, 6, 7);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(160, 77);
@@ -228,7 +230,7 @@ namespace QuanLyTuyenSinh.Controls
             // 
             // btnBoQua
             // 
-            btnBoQua.Location = new Point(1430, 19);
+            btnBoQua.Location = new Point(1360, 19);
             btnBoQua.Margin = new Padding(6, 7, 6, 7);
             btnBoQua.Name = "btnBoQua";
             btnBoQua.Size = new Size(180, 77);
@@ -247,6 +249,17 @@ namespace QuanLyTuyenSinh.Controls
             btnThem.Text = "Thêm hồ sơ";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
+            // 
+            // btnXuatDanhSach
+            // 
+            btnXuatDanhSach.Location = new Point(1650, 19);
+            btnXuatDanhSach.Margin = new Padding(6, 7, 6, 7);
+            btnXuatDanhSach.Name = "btnXuatDanhSach";
+            btnXuatDanhSach.Size = new Size(230, 77);
+            btnXuatDanhSach.TabIndex = 7;
+            btnXuatDanhSach.Text = "Xuất danh sách";
+            btnXuatDanhSach.UseVisualStyleBackColor = true;
+            btnXuatDanhSach.Click += btnXuatDanhSach_Click;
             // 
             // lblTomTat
             // 
@@ -440,6 +453,7 @@ namespace QuanLyTuyenSinh.Controls
         private Button btnLuu;
         private Button btnBoQua;
         private Button btnThem;
+        private Button btnXuatDanhSach;
         private Label lblTomTat;
         private DataGridView dgvHoSo;
         private DataGridViewTextBoxColumn colStt;
